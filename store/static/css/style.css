@@ -37,16 +37,21 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
+@font-face {
+	font-family: 'KosugiMaru';
+	src: url("../../static/fonts/KosugiMaru-Regular.ttf");
+	font-weight: 400;
+	font-style: normal; 
+}
+@font-face {
+	font-family: 'Harmonia Sans Pro Cyr';
+	src: url("../../static/fonts/HarmoniaSansProCyr-BlackIt.ttf");
+    font-weight: 900;
+    font-style: italic;
+}
 
 body{
-	font-family: 'Overpass', sans-serif;
-}
-.header{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 999;
+	font-family: 'Kosugi Maru', sans-serif;
 }
 .header__container {
 	background-color: #000000;	
@@ -54,15 +59,17 @@ body{
 .header__outer {
 	background-color: #000000;
 	height: 50px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	height: 50px;
 }
-.header__list__nav{
+.header__list{
 	text-align: left;
 }
-.header__list__user{
-	text-align: right;
-}
-.header__inner {
-}
+
 .top__level {
 	display: inline;
 }
@@ -70,7 +77,12 @@ body{
 	color: #f7eef9;
 	font-size: 16px;
 	display: inline-block;
-	padding: 20px;
+	padding: 10px;
+}
+.top__level p{
+	font-size: 25px;
+	margin-left: 30px;
+	margin-right: 20px;
 }
 
 .title{
@@ -87,29 +99,34 @@ body{
 	display: flex;
 	margin: 1px 1px 1px 1px;
 }
+.title__column p{
+	text-align: left;
+	margin: 10px;
+	color: #000000;
+}
 .title__column {
-
 	flex: 0 0 33.333%;
+	position: relative;
 }
 .title__text h1{	
 	position: absolute;
 	top: 50%;
-	right: 160px;
+	right: 200px;
 	font-size: 50px;
 	font-weight: 800;
+	font-family: 'Harmonia Sans Pro Cyr', italic ;
 }
 .title__text h3{
 	position: absolute;
 	top: 60%;
-	right: 100px;
+	right: 130px;
 	font-size: 30px;
 	font-weight: 800;
+	font-family: 'Kosugi Maru',serif;
 }
 .title__text{
 	color: #000000;
-
 	text-align:center;
-
 }
 .title__content{
 	margin: 0px auto;
@@ -129,8 +146,8 @@ body{
 	backface-visibility: visible;
 }
 .title__content img:hover{
-	transform: rotateY(-180deg);
-	backface-visibility: hidden;
+	transform: scale(1.3);
+	backface-visibility: visible;
 	transition-duration: 0.5s;
 }
 
@@ -154,7 +171,7 @@ body{
 	flex-basis: 200px;
 }
 .contacts__item__3{
-	flex-basis: 200px;
+	flex-basis: 300px;
 }
 .contacts__item a{
 	color: #f7eef9;
@@ -176,4 +193,41 @@ body{
 	position: absolute;
 	right: 30px;
 	bottom: 30px;
+}
+
+
+.clothes__body {
+	text-align: center;
+}
+.clothes__row {	
+	display: flex;
+	margin: 1px 1px 1px 1px;
+}
+.clothes__column p{
+	text-align: left;
+	margin: 10px;
+	color: #000000;
+}
+.clothes__column {
+	flex: 0 0 25%;
+	position: relative;
+}
+.clothes__content{
+	margin: 10px 5px;
+	padding: 0px 0px 160% 0px;
+	overflow: hidden;
+	position: relative;
+}
+.clothes__content img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+}
+.clothes__column p{
+	text-align: left;
+	margin: 10px;
+	color: #000000;
 }
