@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
 <!DOCTYPE html>
 <!-- Оболочка документа, указываем язык содержимого -->
@@ -13,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 		<!-- Подключаем CSS -->
-		<link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css'%}" >  
 		<!-- Кодировка страницы -->
 		<meta charset="UTF-8" >
 		<!--Адаптивность-->
@@ -75,7 +76,7 @@
 			<div class="title__row">
 				<div class="title__column">
 					<div class="title__content">
-						<img src="../../static/img/3.webp" alt="" >					
+						<img src="{% static '../../static/img/3.webp' %}" alt="" >				
 					</div>
 					<a href="#"><p class="product">Сатиновый топ<br>2999 руб.</p></a>
 				</div>
