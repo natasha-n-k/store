@@ -1,0 +1,38 @@
+{% load static %}
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+		<!-- Заголовок страницы в браузере -->
+		<title>Moonstone - Online fashion store</title>
+		<!-- Подключаем шрифты -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+		<!-- Подключаем CSS -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<!-- Кодировка страницы -->
+		<meta charset="UTF-8" >
+		<!--Адаптивность-->
+		<meta name="viewport" content="width=device-width">	
+	</head>
+		<!-- Отключает принудительную ссылку у номера телефона на iOS -->
+		<meta name="format-detection" content="telephone=no">
+	<!-- Отображаемое тело страницы -->
+	<body>
+		<header>
+			{% include 'includes/header.html' %}
+		</header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+	    <footer class="contacts">
+			{% include 'includes/footer.html' %}
+		</footer>
+	</body>
+</html>
