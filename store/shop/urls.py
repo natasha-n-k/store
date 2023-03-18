@@ -20,6 +20,14 @@ from . import views
 app_name = 'shop'
 
 urlpatterns = [
-    path('', views.shop, name='shop'), 
+    path('', views.shop, name='shop'),
+    path('products_1/', views.product_list_1, name='product_list_1'),
+    path('products_2/', views.product_list_2, name='product_list_2'),
+    path('products_3/', views.product_list_3, name='product_list_3'),
+    path('products/<int:pk>/', views.product_detail, name='product_detail'),
+    path('cart/', views.cart_detail, name='cart_detail'),
+    path('account/', views.account_detail, name='account_detail'),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('checkout/', views.checkout, name='checkout'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
