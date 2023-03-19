@@ -8,7 +8,7 @@ def shop(request):
 def product_list_1(request):
     #products = Product.objects.all()
     #context = {'products': products}
-    return render(request, 'shop/product_list_1.html')
+    return render(request, 'shop/products_list_1.html')
 
 def product_list_2(request):
     #products = Product.objects.all()
