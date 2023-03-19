@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+  <h1>Your cart</h1>
+  {% if cart %}
+    <ul>
+      {% for item in cart %}
+        <li>{{ item.product.name }} - {{ item.quantity }} pcs - ${{ item.total_price }}</li>
+      {% endfor %}
+    </ul>
+    <p>Total: ${{ cart.get_total_price }}</p>
+    <form method="post" action="{% url 'store:checkout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Checkout">
+    </form>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+{% endblock %}
