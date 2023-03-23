@@ -53,10 +53,12 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 body{
 	font-family: 'Kosugi Maru', sans-serif;
 }
-.header__container {
-	background-color: #000000;	
+
+.basis{
+	padding: 50px;
 }
-.header__outer {
+
+header{
 	background-color: #000000;
 	height: 50px;
 	position: fixed;
@@ -64,7 +66,13 @@ body{
 	left: 0;
 	width: 100%;
 	z-index: 999;
-	height: 50px;
+}
+
+.header__container {
+	background-color: #000000;	
+}
+.header__outer {
+
 }
 .header__list{
 	text-align: left;
@@ -91,6 +99,7 @@ body{
     background-repeat: no-repeat;
 	position: relative;
 	height: 800px;
+	margin-top: 50px;
 }
 .title__body {
 	text-align: center;
@@ -228,5 +237,52 @@ body{
 .clothes__column p{
 	text-align: left;
 	margin: 10px;
+	color: #000000;
+}
+
+
+.product-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: calc(33.33% - 10px);
+    height: 600px;
+    margin: 1px;
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.product-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #000000;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+	text-align: left;
+}
+
+.product-info a{
 	color: #000000;
 }

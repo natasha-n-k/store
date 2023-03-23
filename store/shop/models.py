@@ -1,14 +1,15 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 
-
+fs = FileSystemStorage(location='media/product_images')
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='product_images', blank=True)
+    image = models.ImageField(upload_to='product_images', storage=fs)
 
     def __str__(self):
         return self.name

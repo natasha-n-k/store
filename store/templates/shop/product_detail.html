@@ -1,6 +1,6 @@
 {% extends 'shop/base.html' %}
-
-{% block content %}
+<main class="main">
+  {% block content %}
   <h1>{{ product.name }}</h1>
   <p>${{ product.price }}</p>
   <p>{{ product.description }}</p>
@@ -8,4 +8,5 @@
     {% csrf_token %}
     <input type="submit" value="Add to cart">
   </form>
-{% endblock %}
+  {% endblock %}
+</main>
