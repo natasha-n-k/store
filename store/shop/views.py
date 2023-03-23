@@ -1,19 +1,20 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import Product, Order, OrderItem
-from .forms import OrderForm
+from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from .cart import Cart
-from .forms import CartAddProductForm
 
 
 
 def shop(request):
-    return render(request, 'shop/shop.html')
+    return render(request, 'shop/shop.html') 
 
 def product_list_1(request):
     query = request.GET.get('q')
@@ -40,13 +41,13 @@ def product_list_3(request):
     return render(request, 'shop/products_list_3.html', {'products': products})
 
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug)
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
     return render(request, 'shop/product_detail.html', {'product': product})
 
 @login_required
 def cart_detail(request):
-    order = Order.objects.filter(user=request.user, ordered=False).first()
+    order = Order.objects.filter(user=request.user, paid=False).first()
     if order:
         order_items = order.items.all()
     else:
@@ -70,7 +71,7 @@ def signup(request):
 
 @login_required
 def order_create(request):
-    order = Order.objects.filter(user=request.user, ordered=False).first()
+    order = Order.objects.filter(user=request.user, paid=False).first()
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -106,17 +107,17 @@ def user_logout(request):
     return redirect('shop:index')
 
 @require_POST
-def cart_add(request, product_id):
+def cart_add(request, id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, id=id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
-    return redirect('cart_detail')
+    return redirect('shop:cart_detail')
 
 def cart_remove(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, id=id)
     cart.remove(product)
-    return redirect('cart_detail')
+    return redirect('shop:cart_detail')

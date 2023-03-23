@@ -4,7 +4,7 @@
   <h1>{{ product.name }}</h1>
   <p>${{ product.price }}</p>
   <p>{{ product.description }}</p>
-  <form method="post" action="{% url 'store:add_to_cart' product.id %}">
+  <form method="post" action="{% url 'shop:cart_add' product.id %}">
     {% csrf_token %}
     <input type="submit" value="Add to cart">
   </form>
