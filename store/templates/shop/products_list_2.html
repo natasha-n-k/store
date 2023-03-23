@@ -1,15 +1,21 @@
 {% extends 'shop/base.html' %}
-
+{% load static %}
 {% block content %}
-  <h1>Products</h1>
-  <ul>
-	{% for product in products %}
-	<div class="product">
-	  <h3><a href="{% url 'shop:product_detail' id=product.id %}">{{ product.name }}</a></h3>
-	  <img src="{{ product.image.url }}" alt="{{ product.name }}">
-	  <p>{{ product.description }}</p>
-	  <p>{{ product.price }} руб.</p>
-	</div>
-  {% endfor %}
-  </ul>
-{% endblock %}
+<div class="basis">
+    <div class="product-row">
+        {% for product in products %}
+        <div class="product">
+            <div class="product-image">
+                <a href="{% url 'shop:product_detail' id=product.id %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
+            </div>
+            <div class="product-info">
+                <h3><a href="{% url 'shop:product_detail' id=product.id %}">{{ product.name }}</a></h3>
+                <p>{{ product.price }} руб.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 
