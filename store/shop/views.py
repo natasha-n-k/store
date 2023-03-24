@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -64,7 +65,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('shop:index')
+            return redirect('shop:shop')
     else:
         form = UserCreationForm()
     return render(request, 'shop/signup.html', {'form': form})
@@ -84,11 +85,12 @@ def order_create(request):
                 new_item.save()
             order.ordered = True
             order.save()
-            return redirect('shop:index')
+            return redirect('shop:shop')
     else:
         form = OrderCreateForm()
     return render(request, 'shop/checkout.html', {'form': form})
 
+@csrf_protect
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -96,7 +98,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('shop:index')
+            return redirect('shop:shop')
         else:
             return render(request, 'shop/login.html', {'error': 'Invalid login credentials'})
     else:
@@ -104,7 +106,7 @@ def user_login(request):
     
 def user_logout(request):
     logout(request)
-    return redirect('shop:index')
+    return redirect('shop:shop')
 
 @require_POST
 def cart_add(request, id):

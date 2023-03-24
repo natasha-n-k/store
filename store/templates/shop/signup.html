@@ -1,6 +1,6 @@
 {% extends 'shop/base.html' %}
-
 {% block content %}
+<div class="signup__body">
   <h2>Sign Up</h2>
   <form method="post">
     {% csrf_token %}
@@ -8,3 +8,4 @@
     <button type="submit">Sign Up</button>
   </form>
 {% endblock %}
+</div>

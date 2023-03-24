@@ -6,26 +6,39 @@
         <h3><i>Самые модные новинки <br> этого сезона</i></h3>
 	    </div>
 	</div>
-    <div class="title__body">
-		<div class="title__row">
+    <div class="title-basis">
+		<div class="title-row">
 			<div class="title__column">
-				<div class="title__content">
-					<img src="{% static 'img/3.jpg' %}" alt="" >
+				<div class="title-image">
+					<a href="#">
+						<img src="{% static 'img/3.jpg' %}"  alt="" >
+					</a>
 				</div>
-				<a href="#"><p class="product">Сатиновый топ<br>2999 руб.</p></a>
+				<div class="title-info">
+					<p>Черное мини-платье "Сияние"<br>5499.00 руб.</p>
+				</div>
 			</div>
 			<div class="title__column">
-				<div class="title__content">
-					<img src="{% static 'img/2.jpg' %}"  alt="" >
+				<div class="title-image">
+					<a href="#">
+						<img src="{% static 'img/2.jpg' %}"  alt="" >
+					</a>
 				</div>
-				<a href="#"><p class="product">Сатиновое вечернее платье<br>5499 руб.</p></a>
+				<div class="title-info">
+					<p>Атласное вечернее платье<br>6499.00 руб.</p>
+				</div>
 			</div>
 			<div class="title__column">
-				<div class="title__content">
-					<img src="{% static 'img/4.jpg' %}"  alt="" >
+				<div class="title-image">
+					<a href="#">
+						<img src="{% static 'img/4.jpg' %}"  alt="" >
+					</a>
 				</div>
-				<p class="product">Сатиновый костюм<br>7699 руб.</p></a>
-		    </div>
+				<div class="title-info">
+					<p>Сатиновый костюм<br>7699 руб.</p>
+				</div>
+			</div>
 		</div>
-	</div>
 {% endblock %}
+
+

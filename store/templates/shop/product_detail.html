@@ -1,12 +1,28 @@
 {% extends 'shop/base.html' %}
 <main class="main">
   {% block content %}
-  <h1>{{ product.name }}</h1>
-  <p>${{ product.price }}</p>
-  <p>{{ product.description }}</p>
-  <form method="post" action="{% url 'shop:cart_add' product.id %}">
-    {% csrf_token %}
-    <input type="submit" value="Add to cart">
-  </form>
+  <div class="detail__body">
+    <div class="detail__row">
+      <div class="detail">
+        <div class="detail__image">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail__name">
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.price }} руб.</p>
+          <form method="post" action="{% url 'shop:cart_add' product.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <button type="submit">Добавить в корзину</button>
+          </form>
+        </div>
+        <div class="detail__description">
+          <p>{{ product.description }}</p>
+        </div>
+      </div>  
+    </div>
+  </div>
   {% endblock %}
 </main>
