@@ -1,23 +1,28 @@
 {% extends 'shop/base.html' %}
 {% load static %}
+
 {% block content %}
-<div class="account__body">
-    {% if user.is_authenticated %}
-    <h1>Your account</h1>
-    <p>Email: {{ user.email }}</p>
-    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-    {% else %}
-    <h1>Register</h1>
-    <form method="post" action="{% url 'store:signup' %}">
-    {% csrf_token %}
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <label for="confirm_password">Confirm Password:</label>
-    <input type="password" id="confirm_password" name="confirm_password" required>
-    <button type="submit">Sign Up</button>
-    </form>
-    {% endif %}
-</div>
+  {% if user.is_authenticated %}
+    <div class="account__body">
+        <div class="account__hello">
+            <h1>Добро пожаловать в личный кабинет,</h1>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+        </div>
+        <div class="account__top">
+        </div>
+        История ваших покупок
+        <div class="account__out">
+            <form method="post" action="{% url 'shop:logout' %}">
+                {% csrf_token %}
+                <button class="account__button" type="submit">Выйти</button>
+              </form>
+        </div>
+    </div>
+  {% else %}
+    <p>Вы не авторизованы! <a href="{% url 'shop:login' %}">Войдите</a>, чтобы продолжить.</p>
+  {% endif %}
 {% endblock %}
+
+
+
+

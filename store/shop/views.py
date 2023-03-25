@@ -59,8 +59,8 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            return redirect('shop:shop')
+            messages.success(request, 'Вы успешно зарегистрировались!')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, 'shop/signup.html', {'form': form})
