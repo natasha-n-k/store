@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from . import views
+
 app_name = 'shop'
 
 urlpatterns = [
@@ -26,8 +27,8 @@ urlpatterns = [
     path('products_3/', views.product_list_3, name='product_list_3'),
     path('product/<int:id>/', views.product_detail, name='product_detail'),
     path('cart/', views.cart_detail, name='cart_detail'),
-    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
-    path('cart/remove/<int:id>/', views.cart_remove, name='cart_remove'),
+    path('cart/add/<int:product_id>/', views.cart_add, name='cart_add'),
+    path('cart/remove/<int:product_id>/', views.cart_remove, name='cart_remove'),
     path('order/', views.order_create, name='order_create'),
     path('checkout/', views.order_create, name='checkout'),
     path('account/', views.account_detail, name='account_detail'),

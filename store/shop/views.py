@@ -9,9 +9,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Product, Order, OrderItem
-from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from .cart import Cart
-
+from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 
 
 def shop(request):
@@ -46,14 +45,10 @@ def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
     return render(request, 'shop/product_detail.html', {'product': product})
 
-@login_required
+
 def cart_detail(request):
-    order = Order.objects.filter(user=request.user, paid=False).first()
-    if order:
-        order_items = order.items.all()
-    else:
-        order_items = []
-    return render(request, 'shop/cart_detail.html', {'order_items': order_items, 'order': order})
+    cart = Cart(request)
+    return render(request, 'shop/cart_detail.html', {'cart': cart})
 
 @login_required
 def account_detail(request):
@@ -70,9 +65,11 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'shop/signup.html', {'form': form})
 
-@login_required
 def order_create(request):
     order = Order.objects.filter(user=request.user, paid=False).first()
+    if order is None:
+        # create a new order if one doesn't exist
+        order = Order.objects.create(user=request.user, paid=False)
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -98,7 +95,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('shop:shop')
+            return redirect('shop:account_detail.html')
         else:
             return render(request, 'shop/login.html', {'error': 'Invalid login credentials'})
     else:
@@ -106,20 +103,20 @@ def user_login(request):
     
 def user_logout(request):
     logout(request)
-    return redirect('shop:shop')
+    return redirect('shop:index')
 
 @require_POST
-def cart_add(request, id):
+def cart_add(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=id)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
+    product = get_object_or_404(Product, id=product_id)
+    quantity = request.POST.get('quantity')
+    if quantity is not None:
+        cart.add(product=product, quantity=quantity, update_quantity=request.POST.get('update', False))
     return redirect('shop:cart_detail')
 
+@require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=id)
-    cart.remove(product)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product=product)
     return redirect('shop:cart_detail')
