@@ -1,20 +1,22 @@
 {% extends 'shop/base.html' %}
+{% load static %}
 {% block content %}
-<div class="cart__body">
+<div class="cart__body{% if cart %} cart__body--filled{% endif %}">
   <h1>Корзина</h1>
   {% if cart %}
-    <ul>
-      {% for item in cart %}
-        <li>{{ item.product.name }} - {{ item.quantity }} pcs - ${{ item.total_price }}</li>
-      {% endfor %}
-    </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
-    <form method="post" action="{% url 'store:checkout' %}">
-      {% csrf_token %}
-      <input type="submit" value="Checkout">
-    </form>
+  <ul>
+    {% for item in cart %}
+    <li>{{ item.product.name }} - {{ item.quantity }} pcs - ${{ item.total_price }}</li>
+    {% endfor %}
+  </ul>
+  <p>Total: ${{ cart.get_total_price }}</p>
+  <form method="post" action="{% url 'store:checkout' %}">
+    {% csrf_token %}
+    <input type="submit" value="Checkout">
+  </form>
   {% else %}
-    <p>Your cart is empty.</p>
+  <p>В вашей корзине нет покупок</p>
+  <button> <a class="button_cart" href="{% url 'shop:product_list_2' %}" class="btn btn-primary">Перейти к покупкам</a></button>
   {% endif %}
-{% endblock %}
 </div>
+{% endblock %}

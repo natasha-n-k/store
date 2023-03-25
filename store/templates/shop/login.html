@@ -1,14 +1,16 @@
 {% extends 'shop/base.html' %}
+{% load static %}
 {% block content %}
 <div class="login__body">
-  <h1>Login</h1>
+  <h1>Личный кабинет</h1>
   <form method="post">
     {% csrf_token %}
     <label for="username">Username:</label>
     <input type="text" name="username" id="username"><br>
     <label for="password">Password:</label>
     <input type="password" name="password" id="password"><br>
-    <input type="submit" value="Login">
+    <input type="submit" value="Войти">
   </form>
+  <a href="#">Забыли пароль?</a>
 </div>
 {% endblock %}

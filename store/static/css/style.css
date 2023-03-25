@@ -121,12 +121,14 @@ header{
 
 .title-basis{
 	padding-bottom: 10px;
-	margin-top: 50px;
+	margin-top: 20px;
 }
+
 .title-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+	margin-bottom: 80px;
 }
 
 .title__column {
@@ -153,6 +155,12 @@ header{
     height: 100%;
 }
 
+.title-image img:hover{
+	transform: scale(1.1);
+	backface-visibility: visible;
+	transition-duration: 0.5s;
+}
+
 .title-info {
     position: absolute;
     bottom: 0;
@@ -167,13 +175,6 @@ header{
 
 .title-info a{
 	color: #000000;
-}
-
-
-.title-image img:hover{
-	transform: scale(1.3);
-	backface-visibility: visible;
-	transition-duration: 0.5s;
 }
 
 .contacts{
@@ -384,12 +385,45 @@ header{
 }
 
 .cart__body{
-	background-color: #5f186f;
+	background-color: #f7eef9;
 	padding-top: 50px;
 	padding-bottom: 10px;
 	position: relative;
 	height: 800px;
 	padding-bottom: 100px;
+	text-align: center;
+}
+
+.cart__body--filled {
+	border-color: #5cb85c;
+}
+
+.cart__body h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.cart__body ul{
+	
+}
+
+.cart__body form{
+
+}
+
+.cart__body button{
+	margin: 20px;
+	padding: 10px 25px;
+	border-radius: 4px;
+	background-color: #000000;
+	color: #f7eef9;
+	font-size: 18px;
+}
+
+.button_cart{
+	color: #f7eef9;
 }
 
 .signup__body{
@@ -409,6 +443,7 @@ header{
 	height: 800px;
 	padding-bottom: 100px;
 }
+
 
 .checkout__body{
 	background-color: #480a56;
