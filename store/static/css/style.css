@@ -389,7 +389,7 @@ header{
 	padding-top: 50px;
 	padding-bottom: 10px;
 	position: relative;
-	height: 800px;
+	height: 700px;
 	padding-bottom: 100px;
 	text-align: center;
 }
@@ -440,9 +440,45 @@ header{
 	padding-top: 50px;
 	padding-bottom: 10px;
 	position: relative;
-	height: 800px;
+	height: 700px;
 	padding-bottom: 100px;
+	text-align: center;
+	font-size: 16px;
 }
+
+.login__body h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.login__input {
+	padding: 20px;
+	background-color: #000000;
+	color: #f7eef9;
+	border-radius: 4px;
+}
+
+.login__body input{
+	padding: 10px 25px;
+	margin: 20px;
+    font-size: 16px;
+}
+
+.login__body input{
+	padding: 10px 25px;
+	margin: 10px;
+    font-size: 16px;
+}
+
+.login__body a{
+    color: #000000;
+}
+
+
+
+
 
 
 .checkout__body{
@@ -463,3 +499,4 @@ header{
 	height: 800px;
 	padding-bottom: 100px;
 }
+

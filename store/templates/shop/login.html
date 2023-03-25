@@ -5,11 +5,11 @@
   <h1>Личный кабинет</h1>
   <form method="post">
     {% csrf_token %}
-    <label for="username">Username:</label>
+    <label for="username">Логин:</label>
     <input type="text" name="username" id="username"><br>
-    <label for="password">Password:</label>
+    <label for="password">Пароль:</label>
     <input type="password" name="password" id="password"><br>
-    <input type="submit" value="Войти">
+    <input class="login__input" type="submit" value="Войти">
   </form>
   <a href="#">Забыли пароль?</a>
 </div>

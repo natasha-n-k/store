@@ -95,7 +95,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('shop:account_detail.html')
+            return redirect('shop:account_detail')
         else:
             return render(request, 'shop/login.html', {'error': 'Invalid login credentials'})
     else:
@@ -103,7 +103,7 @@ def user_login(request):
     
 def user_logout(request):
     logout(request)
-    return redirect('shop:index')
+    return redirect('shop:login')
 
 @require_POST
 def cart_add(request, product_id):
