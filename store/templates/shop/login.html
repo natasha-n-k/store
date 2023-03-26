@@ -3,13 +3,15 @@
 {% block content %}
 <div class="login__body">
   <h1>Личный кабинет</h1>
-  <form method="post">
-    {% csrf_token %}
-    <label for="username">Логин:</label>
-    <input type="text" name="username" id="username"><br>
-    <label for="password">Пароль:</label>
-    <input type="password" name="password" id="password"><br>
-    <input class="login__input" type="submit" value="Войти">
+  <form method="post" action="{% url 'shop:login' %}">
+  {% csrf_token %}
+  <label for="username">Имя пользователя:</label>
+  <input type="text" id="username" name="username">
+  <br>
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password">
+  <br>
+  <button class="login__input" type="submit">Войти</button>
   </form>
   <div>
     <a href="{% url 'shop:signup' %}">Зарегистрироваться</a>
@@ -19,3 +21,4 @@
   </div>
 </div>
 {% endblock %}
+

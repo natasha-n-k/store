@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from . import views
+from django.contrib.auth.views import LoginView
 
 app_name = 'shop'
 
@@ -32,7 +33,7 @@ urlpatterns = [
     path('order/', views.order_create, name='order_create'),
     path('checkout/', views.order_create, name='checkout'),
     path('account/', views.account_detail, name='account_detail'),
-    path('login/', views.user_login, name='login'),
+    path('login/', LoginView.as_view(template_name='shop/login.html'), name='login'),
     path('signup/', views.signup, name='signup'),
     path('logout/', views.user_logout, name='logout'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

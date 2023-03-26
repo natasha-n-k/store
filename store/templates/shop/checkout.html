@@ -1,11 +1,29 @@
 {% extends 'shop/base.html' %}
 {% block content %}
+
 <div class="checkout__body">
-  <h2>Checkout</h2>
+  <h2>Заказ</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Place Order</button>
+    <label>Имя:</label>
+    {{ form.first_name }}
+    <br>
+    <label>Фамилия:</label>
+    {{ form.last_name }}
+    <br>
+    <label>Email:</label>
+    {{ form.email }}
+    <br>
+    <label>Адрес:</label>
+    {{ form.address }}
+    <br>
+    <label>Почтовый индекс:</label>
+    {{ form.postal_code }}
+    <br>
+    <label>Город:</label>
+    {{ form.city }}
+    <br>
+    <button type="submit">Заказать</button>
   </form>
 </div>
 {% endblock %}

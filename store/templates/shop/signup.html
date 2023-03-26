@@ -5,8 +5,26 @@
   <h2>Регистрация</h2>
   <form method="post" action="{% url 'shop:login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
+    <div class="form-group">
+      <label for="id_username">Имя пользователя:</label>
+      <input type="text" name="username" class="form-control" required maxlength="150"
+        pattern="^[a-zA-Z0-9.@_+-]+$" title="150 символов или меньше. Разрешены буквы, цифры и символы: @/./+/-/_" />
+    </div>
+    <div class="form-group">
+      <label for="id_email">Email:</label>
+      <input type="email" name="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="id_password">Пароль:</label>
+      <input type="password" name="password" class="form-control" required minlength="8" 
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" 
+        title="Минимум 8 символов, должен содержать хотя бы одну цифру, одну маленькую букву и одну большую букву. Не должен содержать пробелов." />
+    </div>
+    <div class="form-group">
+      <label for="id_password2">Подтверждение пароля:</label>
+      <input type="password" name="password2" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>
   {% if messages %}
   <ul class="messages">

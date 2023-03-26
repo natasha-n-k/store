@@ -5,12 +5,13 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
-from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.urls import reverse
 from .models import Product, Order, OrderItem
 from .cart import Cart
 from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
+from django.contrib.auth.views import LoginView
 
 
 def shop(request):
@@ -53,18 +54,27 @@ def cart_detail(request):
 @login_required
 def account_detail(request):
     return render(request, 'shop/account_detail.html')
-
+    
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             messages.success(request, 'Вы успешно зарегистрировались!')
-            return redirect('login')
+            return redirect('shop:login')
     else:
         form = UserCreationForm()
+        form.fields['username'].label = 'Имя пользователя'
+        form.fields['username'].help_text = 'Обязательное поле. Максимум 150 символов. Разрешены буквы, цифры и символы @/./+/-/_'
+        form.fields['email'].label = 'Email'
+        form.fields['email'].help_text = 'Обязательное поле'
+        form.fields['password1'].label = 'Пароль'
+        form.fields['password1'].help_text = 'Ваш пароль не должен быть похож на другую личную информацию, должен содержать как минимум 8 символов, не может быть часто используемым паролем и не может состоять только из цифр.'
+        form.fields['password2'].label = 'Подтверждение пароля'
+        form.fields['password2'].help_text = 'Введите пароль, который вы ввели выше, для проверки.'
     return render(request, 'shop/signup.html', {'form': form})
 
+@login_required
 def order_create(request):
     order = Order.objects.filter(user=request.user, paid=False).first()
     if order is None:
@@ -90,14 +100,16 @@ def order_create(request):
 @csrf_protect
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('shop:account_detail')
+            messages.success(request, f'Добро пожаловать, {username}!')
+            return redirect('shop:account_detail')  # перенаправляем на страницу личного кабинета
         else:
-            return render(request, 'shop/login.html', {'error': 'Invalid login credentials'})
+            error_message = 'Неверные имя пользователя или пароль'
+            return render(request, 'shop/login.html', {'error_message': error_message})
     else:
         return render(request, 'shop/login.html')
     
@@ -109,14 +121,21 @@ def user_logout(request):
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    quantity = request.POST.get('quantity')
-    if quantity is not None:
-        cart.add(product=product, quantity=quantity, update_quantity=request.POST.get('update', False))
-    return redirect('shop:cart_detail')
+    if request.method == 'POST':
+        form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product,
+                 quantity=cd['quantity'],
+                 update_quantity=cd['update'])
+        messages.success(request, "Product successfully added to cart.")
+    else:
+        form = CartAddProductForm()
+    return render(request, 'shop/cart_detail.html', {'cart': cart, 'form': form})
 
 @require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    cart.remove(product=product)
+    cart.remove(product)
     return redirect('shop:cart_detail')

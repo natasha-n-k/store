@@ -10,7 +10,7 @@
     {% endfor %}
   </ul>
   <p>Total: ${{ cart.get_total_price }}</p>
-  <form method="post" action="{% url 'store:checkout' %}">
+  <form method="post" action="{% url 'shop:checkout' %}">
     {% csrf_token %}
     <input type="submit" value="Checkout">
   </form>
