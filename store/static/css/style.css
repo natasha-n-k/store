@@ -488,7 +488,8 @@ header{
 }
 
 .login__input {
-	padding: 20px;
+	padding: 12px 25px;
+	margin: 15px;
 	background-color: #000000;
 	color: #f7eef9;
 	border-radius: 4px;
@@ -508,7 +509,7 @@ header{
 
 .login__body a{
     color: #000000;
-	margin: 10px;
+	margin: 20px;
 }
 
 
