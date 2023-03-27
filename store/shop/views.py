@@ -51,6 +51,7 @@ def cart_detail(request):
     cart = Cart(request)
     return render(request, 'shop/cart_detail.html', {'cart': cart})
 
+
 @login_required
 def account_detail(request):
     return render(request, 'shop/account_detail.html')
