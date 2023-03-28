@@ -360,7 +360,7 @@ header{
 	border-radius: 4px;
 	background-color: #000000;
 	color: #f7eef9;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .detail__name h1{
@@ -421,7 +421,7 @@ header{
 	border-radius: 4px;
 	background-color: #000000;
 	color: #f7eef9;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .button_cart{
@@ -493,12 +493,7 @@ header{
 	background-color: #000000;
 	color: #f7eef9;
 	border-radius: 4px;
-}
-
-.login__body input{
-	padding: 10px 25px;
-	margin: 20px;
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .login__body input{
@@ -507,11 +502,14 @@ header{
     font-size: 16px;
 }
 
+
 .login__body a{
     color: #000000;
-	margin: 20px;
 }
 
+.login__signup{
+    padding: 6px;
+}
 
 .checkout__body{
 	background-color: #f7eef9;
@@ -587,5 +585,5 @@ header{
 	border-radius: 4px;
 	background-color: #000000;
 	color: #f7eef9;
-	font-size: 18px;
+	font-size: 16px;
 }
