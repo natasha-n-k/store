@@ -421,8 +421,7 @@ header{
 
 }
 
-.cart__body button{
-	margin: 20px;
+.cart__checkout__button{
 	padding: 10px 25px;
 	border-radius: 4px;
 	background-color: #000000;
@@ -434,6 +433,29 @@ header{
 	color: #f7eef9;
 }
 
+.cart__price{
+	position: fixed;
+	bottom: 240px;
+	left: 660px;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.cart__checkout{
+	position: fixed;
+	margin: 20px;
+	padding: 10px 25px;
+	border-radius: 4px;
+	background-color: #000000;
+	color: #f7eef9;
+	font-size: 16px;
+	left: 630px;
+	bottom: 140px;
+}
+
+.cart__checkout button{
+	color: #f7eef9;
+}
 
 
 

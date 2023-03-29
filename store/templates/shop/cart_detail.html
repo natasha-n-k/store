@@ -22,10 +22,10 @@
     </li>
     {% endfor %}
   </ul>
-  <p>Итого: ${{ cart.get_total_price }}</p>
-  <form method="post" action="{% url 'shop:checkout' %}">
+  <p class="cart__price">К оплате: {{ cart.get_total_price }} руб.</p>
+  <form class="cart__checkout" method="post" action="{% url 'shop:checkout' %}">
     {% csrf_token %}
-    <input type="submit" value="Оформить заказ">
+    <button class="cart__checkout__button">Оформить заказ</button>
   </form>
 {% else %}
 
