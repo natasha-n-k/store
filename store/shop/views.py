@@ -118,21 +118,18 @@ def user_logout(request):
     logout(request)
     return redirect('shop:login')
 
+
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    if request.method == 'POST':
-        form = CartAddProductForm(request.POST)
+    product = Product.objects.get(id=product_id)
+    form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-        messages.success(request, "Product successfully added to cart.")
-    else:
-        form = CartAddProductForm()
-    return render(request, 'shop/cart_detail.html', {'cart': cart, 'form': form})
+    return redirect('shop:cart_detail')
 
 @require_POST
 def cart_remove(request, product_id):

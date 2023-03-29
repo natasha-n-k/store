@@ -361,6 +361,7 @@ header{
 	background-color: #000000;
 	color: #f7eef9;
 	font-size: 16px;
+	margin-top: 20px;
 }
 
 .detail__name h1{
@@ -378,6 +379,11 @@ header{
 	margin-top: 100px;
     font-size: 16px;
 }
+
+.detail__form{
+    font-size: 16px;
+}
+
 
 .detail__description{
 	margin-top: 30px;

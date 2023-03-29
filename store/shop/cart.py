@@ -30,9 +30,12 @@ class Cart:
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         for item in self.cart.values():
+            if 'product_id' not in item:
+                continue
+            product = products.get(id=item['product_id'])
+            item['product'] = product
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
-            item['product'] = products.get(id=int(item['product_id']))
             yield item
             
     def __len__(self):
@@ -46,5 +49,4 @@ class Cart:
         self.save()
 
     def save(self):
-        self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True

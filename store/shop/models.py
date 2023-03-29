@@ -3,7 +3,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 
+
 fs = FileSystemStorage(location='media/product_images')
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -31,7 +33,7 @@ class Order(models.Model):
         ordering = ('-created',)
 
     def __str__(self):
-        return f'Order {self.id}'
+        return f'Заказ {self.id}'
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
@@ -52,12 +54,12 @@ class OrderItem(models.Model):
 
     
 class Cart(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username}'s cart"
+        return f"Корзина пользователя {self.user.username}"
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
