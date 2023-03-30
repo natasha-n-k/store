@@ -8,8 +8,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
-from .models import Product, Order, OrderItem
-from .cart import Cart
+from .models import Product, Order, OrderItem, Cart
 from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from django.contrib.auth.views import LoginView
 
