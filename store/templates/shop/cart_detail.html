@@ -27,10 +27,11 @@
     {% csrf_token %}
     <button class="cart__checkout__button">Оформить заказ</button>
   </form>
-{% else %}
-
-  <p>В вашей корзине нет покупок</p>
-  <button> <a class="button_cart" href="{% url 'shop:product_list_2' %}" class="btn btn-primary">Перейти к покупкам</a></button>
+  {% else %}
+  <div class="button__cart">
+    <p>В вашей корзине нет покупок</p>
+    <button class="button__cart__get"> <a href="{% url 'shop:product_list_2' %}" class="btn btn-primary">Перейти к покупкам</a></button>
+  </div>
   {% endif %}
 </div>
 {% endblock %}
