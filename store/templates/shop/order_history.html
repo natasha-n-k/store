@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="history__body">
+    <h2>История заказов</h2>
+    {% if orders %}
+      <table>
+        <thead>
+          <tr>
+            <th>Дата заказа</th>
+            <th>Номер заказа</th>
+            <th>Название товара</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Общая стоимость</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+            {% for item in order.items.all %}
+              <tr>
+                <td>{{ order.created }}</td>
+                <td>{{ order.id }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.get_cost }}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>У вас пока нет заказов.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

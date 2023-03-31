@@ -36,4 +36,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='shop/login.html'), name='login'),
     path('signup/', views.signup, name='signup'),
     path('logout/', views.user_logout, name='logout'),
+    path('order_history/', views.order_history, name='order_history'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

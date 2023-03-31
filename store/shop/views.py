@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
+
 from .models import Product, Order, OrderItem, Cart
 from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from django.contrib.auth.views import LoginView
@@ -75,27 +76,30 @@ def signup(request):
     return render(request, 'shop/signup.html', {'form': form})
 
 @login_required
+@csrf_protect
 def order_create(request):
-    order = Order.objects.filter(user=request.user, paid=False).first()
-    if order is None:
-        # create a new order if one doesn't exist
-        order = Order.objects.create(user=request.user, paid=False)
-    if request.method == 'POST':
-        form = OrderCreateForm(request.POST)
-        if form.is_valid():
-            new_order = form.save(commit=False)
-            new_order.user = request.user
-            new_order.order = order
-            new_order.save()
-            for item in order.items.all():
-                new_item = OrderItem.objects.create(order=new_order, product=item.product, quantity=item.quantity)
-                new_item.save()
-            order.ordered = True
-            order.save()
-            return redirect('shop:shop')
+    cart = Cart(request)
+    form = OrderCreateForm(request.POST)
+    if form.is_valid():
+        order = form.save(commit=False)
+        order.user = request.user
+        order.save()
+        for item in cart:
+            OrderItem.objects.create(
+                order=order,
+                product=item['product'],
+                price=item['price'],
+                quantity=item['quantity']
+            )
+        cart.clear()
+        messages.success(request, 'Ваш заказ успешно оформлен!')
+        return redirect('shop:order_history')
     else:
-        form = OrderCreateForm()
+        print(form.errors)  # добавьте эту строку для отладки
+        print(form.non_field_errors())  # добавьте эту строку для отладки
+        print(request.POST)  # добавьте эту строку для отладки
     return render(request, 'shop/checkout.html', {'form': form})
+
 
 @csrf_protect
 def user_login(request):
@@ -136,3 +140,9 @@ def cart_remove(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('shop:cart_detail')
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user)
+    return render(request, 'shop/order_history.html', {'orders': orders})
+

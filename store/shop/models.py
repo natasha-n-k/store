@@ -108,3 +108,4 @@ class Cart(models.Model):
         if session:
             session[settings.CART_SESSION_ID] = self.cart
             session.modified = True
+

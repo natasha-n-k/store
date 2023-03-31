@@ -3,7 +3,7 @@
 
 <div class="checkout__body">
   <h2>Заказ</h2>
-  <form method="post">
+  <form method="post" action="{% url 'shop:order_create' %}">
     {% csrf_token %}
     <label>Имя:</label>
     {{ form.first_name }}
