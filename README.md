@@ -16,11 +16,21 @@
 - Для работы с базой данных SQLite используется ORM Django
 
 ### Установка
-- Склонируйте репозиторий на свой компьютер: git clone https://github.com/username/shop.git
-- Перейдите в директорию проекта: cd shop
-- Установите зависимости: pip install -r requirements.txt
-- Примените миграции: python manage.py migrate
-- Запустите сервер: python manage.py runserver
+- Склонируйте репозиторий на свой компьютер: 
+
+  ```git clone https://github.com/username/shop.git```
+- Перейдите в директорию проекта: 
+
+   ```cd shop```
+- Установите зависимости:
+
+   ```pip install -r requirements.txt```
+- Примените миграции: 
+
+   ```python manage.py migrate```
+- Запустите сервер:
+
+   ```python manage.py runserver```
 - Откройте браузер и перейдите на http://localhost:8000/
 
 ### Использование
