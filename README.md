@@ -51,3 +51,17 @@
 
 Чтобы оформить заказ, перейдите в корзину и нажмите кнопку "Оформить заказ". Заполните форму с необходимыми данными, чтобы оформить заказ. После оформления заказа вы получите подтверждение на вашу электронную почту.
 
+
+![image](https://user-images.githubusercontent.com/108083300/231246080-dfa9db18-e255-4a04-a625-dc55bb663ebd.png)
+
+![image](https://user-images.githubusercontent.com/108083300/231246352-5c72aefb-d095-4212-84c0-e411aafdf1a1.png)
+
+![image](https://user-images.githubusercontent.com/108083300/231246557-cc988c61-0086-44fd-a8f0-ca70949c3659.png)
+
+![image](https://user-images.githubusercontent.com/108083300/231246758-ab320fc7-88f6-4354-83b0-c56ba115dc3f.png)
+
+
+
+
+
+
