@@ -8,11 +8,9 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
-
 from .models import Product, Order, OrderItem, Cart
 from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from django.contrib.auth.views import LoginView
-
 
 def shop(request):
     return render(request, 'shop/shop.html') 
@@ -48,8 +46,11 @@ def product_detail(request, id):
 
 
 def cart_detail(request):
-    cart = Cart(request)
-    return render(request, 'shop/cart_detail.html', {'cart': cart})
+    cart = Cart.objects.filter(user=request.user).all()
+    context = {
+        'cart': cart,
+    }
+    return render(request, 'shop/cart_detail.html', context)
 
 
 @login_required
@@ -74,32 +75,28 @@ def signup(request):
         form.fields['password2'].label = 'Подтверждение пароля'
         form.fields['password2'].help_text = 'Введите пароль, который вы ввели выше, для проверки.'
     return render(request, 'shop/signup.html', {'form': form})
-
 @login_required
-@csrf_protect
+@require_POST
 def order_create(request):
-    cart = Cart(request)
-    form = OrderCreateForm(request.POST)
-    if form.is_valid():
-        order = form.save(commit=False)
-        order.user = request.user
-        order.save()
-        for item in cart:
-            OrderItem.objects.create(
-                order=order,
-                product=item['product'],
-                price=item['price'],
-                quantity=item['quantity']
-            )
-        cart.clear()
-        messages.success(request, 'Ваш заказ успешно оформлен!')
-        return redirect('shop:order_history')
+    cart = Cart.objects.filter(user=request.user)
+    if request.method == 'POST':
+        form = OrderCreateForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
+            for item in cart:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    price=item.product.price
+                )
+            cart.delete()
+            return redirect(reverse('shop:order_history', args=[order.id]))
     else:
-        print(form.errors)  # добавьте эту строку для отладки
-        print(form.non_field_errors())  # добавьте эту строку для отладки
-        print(request.POST)  # добавьте эту строку для отладки
-    return render(request, 'shop/checkout.html', {'form': form})
-
+        form = OrderCreateForm()
+    return render(request, 'shop/checkout.html', {'form': form, 'cart': cart})
 
 @csrf_protect
 def user_login(request):
@@ -110,7 +107,10 @@ def user_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Добро пожаловать, {username}!')
-            return redirect('shop:account_detail')  # перенаправляем на страницу личного кабинета
+            if request.user.is_authenticated:  # проверяем, авторизован ли пользователь
+                return redirect('shop:account_detail')  # если авторизован, перенаправляем на страницу личного кабинета
+            else:
+                return redirect('shop:login')  # если не авторизован, перенаправляем на страницу входа
         else:
             error_message = 'Неверные имя пользователя или пароль'
             return render(request, 'shop/login.html', {'error_message': error_message})
@@ -124,14 +124,13 @@ def user_logout(request):
 
 @require_POST
 def cart_add(request, product_id):
-    cart = Cart(request)
     product = Product.objects.get(id=product_id)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product,
-                 quantity=cd['quantity'],
-                 update_quantity=cd['update'])
+    cart = Cart.objects.filter(user=request.user, product=product).first()
+    if cart:
+        cart.quantity += 1
+        cart.save()
+    else:
+        cart = Cart.objects.create(user=request.user, product=product)
     return redirect('shop:cart_detail')
 
 @require_POST
@@ -142,7 +141,7 @@ def cart_remove(request, product_id):
     return redirect('shop:cart_detail')
 
 @login_required
-def order_history(request):
-    orders = Order.objects.filter(user=request.user)
-    return render(request, 'shop/order_history.html', {'orders': orders})
+def order_history(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'shop/order_history.html', {'order': order})
 
