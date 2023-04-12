@@ -600,11 +600,14 @@ header{
 }
 
 .account__hello{
-
-}
-.account__hello h1{
+	font-size: 20px;
+	font-weight: 700;
 	padding-top: 50px;
 	padding-bottom: 30px;
+}
+
+.account__hello h1{
+	padding-bottom: 20px;
 	font-size: 25px;
 	font-weight: 700;
 }
@@ -617,13 +620,21 @@ header{
 	font-style: italic;
 }
 
-.account__out{
+.account__orders{
+	max-height: 250px;
+	overflow-y: auto;
+}
 
+.account__out{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .account__button{
 	display: block;
-	margin: 350px 700px;
+	margin: 250px 700px;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
@@ -652,8 +663,28 @@ header{
 	font-weight: 700;
 }
 
-.history__body table{
+.history__body table, th, td {
+	border: 1px solid black;
+}
 
+.history__body table{
+	margin: 20px;
+	border-collapse: collapse;
+	border: 2px solid black;
+	width: 70%;
+	margin-left: 200px;
+}
+
+.history__body th {
+    height: 50px;
+	padding: 15px;
+    text-align: left;
+}
+
+.history__body td {
+    height: 30px;
+	padding: 15px;
+    text-align: left;
 }
 
 .history__none{

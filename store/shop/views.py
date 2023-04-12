@@ -55,7 +55,8 @@ def cart_detail(request):
 
 @login_required
 def account_detail(request):
-    return render(request, 'shop/account_detail.html')
+    orders = Order.objects.filter(user=request.user).order_by('-created')
+    return render(request, 'shop/account_detail.html', {'orders': orders})
     
 def signup(request):
     if request.method == 'POST':
@@ -142,6 +143,5 @@ def cart_remove(request, product_id):
 
 @login_required
 def order_history(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
+    order = get_object_or_404(Order, id=order_id, user=request.user)
     return render(request, 'shop/order_history.html', {'order': order})
-

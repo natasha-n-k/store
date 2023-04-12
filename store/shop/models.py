@@ -68,4 +68,4 @@ class Cart(models.Model):
         return self.product.price * self.quantity
     
     def get_cart_total(self):
-        return sum(item.get_total_price() for item in self.cart_set.all())
+        return sum(item.get_total_price() for item in Cart.objects.filter(user=self.user))

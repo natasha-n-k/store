@@ -1,34 +1,29 @@
 {% extends 'shop/base.html' %}
 {% block content %}
 <div class="history__body">
-    <h1>История заказов</h1>
-    {% if orders %}
-      <table>
-        <thead>
-          <tr>
-            <th>Дата заказа</th>
-            <th>Номер заказа</th>
-            <th>Название товара</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th>Общая стоимость</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for order in orders %}
-            {% for item in order.items.all %}
-              <tr>
-                <td>{{ order.created }}</td>
-                <td>{{ order.id }}</td>
-                <td>{{ item.product.name }}</td>
-                <td>{{ item.price }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.get_cost }}</td>
-              </tr>
-            {% endfor %}
-          {% endfor %}
-        </tbody>
-      </table>
+    <h1>Ваш заказ № {{ order.id }}</h1>
+    {% if order %}
+    <table class="history__table">
+      <thead>
+        <tr>
+          <th>Дата заказа</th>
+          <th>Название товара</th>
+          <th>Цена</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in order.items.all %}
+        <tr>
+          <td>{{ order.created_at }}</td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.product.price }}</td>
+          <td>{{ item.quantity }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p> Стоимость заказа {{ order.get_total_cost}} руб.</p>
     {% else %}
     <div class="history__none">
       <p>У вас пока нет заказов.</p>
@@ -36,5 +31,4 @@
     </div>
     {% endif %}
 </div>
-
 {% endblock %}

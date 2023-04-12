@@ -5,11 +5,30 @@
   {% if user.is_authenticated %}
     <div class="account__body">
         <div class="account__hello">
-            <h1>Добро пожаловать в личный кабинет,</h1>
-            <p>{{ user.first_name }}</p>
+            <h1>Добро пожаловать в личный кабинет, </h1> <i>{{ user.first_name }}</i>
         </div>
         <div class="account__top">
           История ваших покупок
+        </div>
+        <div class="account__orders">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Номер заказа</th>
+                <th>Дата</th>
+                <th>Стоимость</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in orders.all %}
+              <tr>
+                <td><a href="{% url 'shop:order_history' order.id %}">{{ order.id }}</a></td>
+                <td>{{ order.created_at }}</td>
+                <td>{{ order.get_total_cost }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         <div class="account__out">
             <form method="post" action="{% url 'shop:logout' %}">
