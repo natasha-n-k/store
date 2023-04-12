@@ -594,9 +594,11 @@ header{
 	background-color: #f7eef9;
 	padding-top: 50px;
 	position: relative;
-	height: 800px;
+	height: 700px;
 	padding-bottom: 100px;
-	text-align: center;
+	background-image: url('../../static/img/100.jpg');
+	background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .account__hello{
@@ -604,25 +606,53 @@ header{
 	font-weight: 700;
 	padding-top: 50px;
 	padding-bottom: 30px;
+	padding-left: 100px;
+
 }
 
 .account__hello h1{
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	font-size: 25px;
 	font-weight: 700;
 }
 
 .account__top{
 	position: absolute;
-	left: 650px;
-	height: 300px;
-	font-size: 16px;
-	font-style: italic;
+	left: 200px;
+	font-size: 20px;
+
 }
 
 .account__orders{
-	max-height: 250px;
+	margin-top: 40px;
+	max-height: 350px;
 	overflow-y: auto;
+	width: 500px;
+	margin-left: 65px;
+	border: 5px solid #f7eef9;
+	border-radius: 4px;
+	text-align: left;
+	padding-left: 10px;
+	background-image: image(1.jpg);
+	
+}
+
+.account__order{
+	padding: 10px;
+}
+
+.account__order__header{
+	padding-bottom: 10px;
+}
+
+.account__order__header a{
+	
+}
+
+.account__order__item {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
 }
 
 .account__out{
@@ -634,7 +664,8 @@ header{
 
 .account__button{
 	display: block;
-	margin: 250px 700px;
+	margin: 100px;
+	margin-left: 10px;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
