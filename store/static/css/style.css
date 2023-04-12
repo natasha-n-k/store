@@ -600,14 +600,21 @@ header{
 }
 
 .account__hello{
-    font-size: 25px;
+
+}
+.account__hello h1{
+	padding-top: 50px;
+	padding-bottom: 30px;
+	font-size: 25px;
 	font-weight: 700;
-	padding: 30px;
 }
 
 .account__top{
 	position: absolute;
+	left: 650px;
 	height: 300px;
+	font-size: 16px;
+	font-style: italic;
 }
 
 .account__out{
@@ -616,7 +623,7 @@ header{
 
 .account__button{
 	display: block;
-	margin: 400px 730px;
+	margin: 350px 700px;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
@@ -635,6 +642,36 @@ header{
 	height: 700px;
 	padding-bottom: 100px;
 	text-align: center;
+	font-size: 16px;
+}
+
+.history__body h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.history__body table{
+
+}
+
+.history__none{
+	font-size: 16px;
+	font-style: italic;
+}
+
+.history__get{
+	padding: 10px 25px;
+	border-radius: 4px;
+	background-color: #000000;
+	color: #f7eef9;
+	font-size: 16px;
+	margin: 30px;
+}
+
+.history__get a{
+	color: #f7eef9;
 	font-size: 16px;
 }
 

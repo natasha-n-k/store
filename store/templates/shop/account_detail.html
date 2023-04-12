@@ -6,11 +6,11 @@
     <div class="account__body">
         <div class="account__hello">
             <h1>Добро пожаловать в личный кабинет,</h1>
-            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>{{ user.first_name }}</p>
         </div>
         <div class="account__top">
+          История ваших покупок
         </div>
-        История ваших покупок
         <div class="account__out">
             <form method="post" action="{% url 'shop:logout' %}">
                 {% csrf_token %}
@@ -22,7 +22,3 @@
     <p>Вы не авторизованы! <a href="{% url 'shop:login' %}">Войдите</a>, чтобы продолжить.</p>
   {% endif %}
 {% endblock %}
-
-
-
-
