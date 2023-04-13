@@ -6,20 +6,18 @@
 <div class="cart__body">
   <h1>Корзина</h1>
   {% if cart %}
-  <ul>
-    {% for item in cart %}
-    <li>
-      <div class="cart__item">
-        <div class="cart__item-details">
-          <h3>{{ item.product.name }}</h3>
-          <p>{{ item.quantity }} шт.</p>
-          <p>{{ item.product.price }}</p>
-          <p>{{ item.get_total_price }}</p>
-        </div>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <tbody>
+      {% for item in cart %}
+      <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }} шт.</td>
+        <td>{{ item.product.price }} руб.</td>
+        <td>{{ item.get_total_price }} руб.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <p class="cart__price">К оплате: {{ cart.get_cart_total}} руб.</p>
   <form class="cart__checkout" method="post" action="{% url 'shop:checkout' %}">
     {% csrf_token %}

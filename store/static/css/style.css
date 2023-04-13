@@ -405,19 +405,56 @@ header{
 
 .cart__body h1{
 	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 	font-size: 25px;
 	font-weight: 700;
 }
 
-.cart__body ul{
+.cart__body table {
 	
+	table-layout: fixed;
+	width: 60%;
+	border-collapse: collapse;
+	border: 3px solid #f7eef9;
+	margin-left: 310px;
+	max-height: 300px;
+	overflow-y: auto;
+	display: flex;
 }
 
-.cart__body form{
-
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #c5b1b1;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px #c5b1b1;
 }
 
+.cart__body tr {
+	height: 50px;
+    text-align: left;
+	padding-left: 20px;
+	border: 2px solid #f7eef9;
+}
+
+.cart__body tr:nth-child(odd) {
+	background-color: #c5b1b1;
+}
+
+.cart__body tr:nth-child(even) {
+	background-color: #f7eef9;
+}
+
+.cart__body td {
+	border: 2px solid #f7eef9;
+	padding-left: 15px;
+}
+
+.cart__body td:first-child{
+	width: 500px;
+}
 
 .cart__price{
 	position: fixed;
