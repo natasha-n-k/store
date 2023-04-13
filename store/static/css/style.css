@@ -413,10 +413,10 @@ header{
 .cart__body table {
 	
 	table-layout: fixed;
-	width: 60%;
+	width: 55%;
 	border-collapse: collapse;
 	border: 3px solid #f7eef9;
-	margin-left: 310px;
+	margin-left: 360px;
 	max-height: 300px;
 	overflow-y: auto;
 	display: flex;
@@ -450,10 +450,11 @@ header{
 .cart__body td {
 	border: 2px solid #f7eef9;
 	padding-left: 15px;
+	width: 17%;
 }
 
 .cart__body td:first-child{
-	width: 500px;
+	width: 550px;
 }
 
 .cart__price{
