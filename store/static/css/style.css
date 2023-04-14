@@ -654,7 +654,7 @@ header{
 .account__hello{
 	font-size: 20px;
 	font-weight: 700;
-	padding-top: 50px;
+	padding-top: 40px;
 	padding-bottom: 30px;
 	padding-left: 100px;
 
@@ -664,11 +664,12 @@ header{
 	padding-bottom: 10px;
 	font-size: 25px;
 	font-weight: 700;
+	padding-left: 110px;
 }
 
 .account__top{
 	position: absolute;
-	left: 200px;
+	left: 330px;
 	font-size: 20px;
 
 }
@@ -677,11 +678,11 @@ header{
 	margin-top: 40px;
 	max-height: 350px;
 	overflow-y: auto;
-	width: 500px;
+	width: 750px;
 	margin-left: 65px;
-	border: 5px solid #f7eef9;
+	border: 2px solid #f7eef9;
 	border-radius: 4px;
-	text-align: left;
+	text-align: center;
 	padding-left: 10px;
 	background-image: image(1.jpg);
 	
@@ -708,7 +709,7 @@ header{
 .account__out{
 	position: absolute;
 	bottom: 0;
-	left: 50%;
+	left: 31.5%;
 	transform: translateX(-50%);
 }
 
@@ -770,7 +771,7 @@ header{
 .history__body th {
     height: 50px;
 	padding: 20px;
-    text-align: left;
+    text-align: center;
 	background-color: #c5b1b1;
 }
 
