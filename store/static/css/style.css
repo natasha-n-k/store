@@ -745,26 +745,38 @@ header{
 }
 
 .history__body table, th, td {
-	border: 1px solid black;
+	border: 1px solid #f7eef9;
 }
 
 .history__body table{
-	margin: 20px;
 	border-collapse: collapse;
-	border: 2px solid black;
-	width: 70%;
-	margin-left: 200px;
+	border: 2px solid #f7eef9;
+	width: 50%;
+	margin-left: 380px;
+	margin-bottom: 50px;
+	max-height: 300px;
+	overflow-y: auto;
+	display: block;
+}
+
+.history__body tr:nth-child(odd) {
+	background-color: #f7eef9;
+}
+
+.history__body tr:nth-child(even) {
+	background-color: #c5b1b1;
 }
 
 .history__body th {
     height: 50px;
-	padding: 15px;
+	padding: 20px;
     text-align: left;
+	background-color: #c5b1b1;
 }
 
 .history__body td {
     height: 30px;
-	padding: 15px;
+	padding: 20px;
     text-align: left;
 }
 
