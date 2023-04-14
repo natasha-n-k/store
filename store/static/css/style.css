@@ -413,10 +413,10 @@ header{
 .cart__body table {
 	
 	table-layout: fixed;
-	width: 55%;
+	width: 60%;
 	border-collapse: collapse;
 	border: 3px solid #f7eef9;
-	margin-left: 360px;
+	margin-left: 310px;
 	max-height: 300px;
 	overflow-y: auto;
 	display: flex;
@@ -454,7 +454,19 @@ header{
 }
 
 .cart__body td:first-child{
-	width: 550px;
+	width: 650px;
+}
+
+.cart__update{
+	padding: 8px 9px;
+	border-radius: 4px;
+	background-color: #f7eef9;
+}
+
+.cart__delete{
+	padding: 8px 9px;
+	border-radius: 4px;
+	background-color: #f7eef9;
 }
 
 .cart__price{

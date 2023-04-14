@@ -44,9 +44,25 @@ def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
     return render(request, 'shop/product_detail.html', {'product': product})
 
-
+@login_required
 def cart_detail(request):
     cart = Cart.objects.filter(user=request.user).all()
+
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        action = request.POST.get('action')
+        if product_id and action:
+            try:
+                cart_item = Cart.objects.get(user=request.user, id=product_id)
+                if action == 'delete':
+                    cart_item.delete()
+                elif action == 'update':
+                    quantity = int(request.POST.get('quantity'))
+                    cart_item.quantity = quantity
+                    cart_item.save()
+            except Cart.DoesNotExist:
+                pass
+
     context = {
         'cart': cart,
     }
