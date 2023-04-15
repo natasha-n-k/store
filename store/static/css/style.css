@@ -411,7 +411,6 @@ header{
 }
 
 .cart__body table {
-	
 	table-layout: fixed;
 	width: 60%;
 	border-collapse: collapse;
@@ -420,7 +419,10 @@ header{
 	max-height: 300px;
 	overflow-y: auto;
 	display: flex;
+	border-bottom: 3px solid #c5b1b1;
+	border-style: double;
 }
+
 
 ::-webkit-scrollbar {
     width: 6px;
@@ -646,7 +648,7 @@ header{
 	position: relative;
 	height: 700px;
 	padding-bottom: 100px;
-	background-image: url('../../static/img/100.jpg');
+	background-image:  url('../../static/img/100.jpg');
 	background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -693,11 +695,16 @@ header{
 }
 
 .account__order__header{
-	padding-bottom: 10px;
+	padding: 10px;
 }
 
-.account__order__header a{
-	
+.account__order__header b{
+	color: #000;
+}
+
+.account__order__body{
+	border-bottom: 2px solid #f7eef9;
+	padding-bottom: 10px;
 }
 
 .account__order__item {

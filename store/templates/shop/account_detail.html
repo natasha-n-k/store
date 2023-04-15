@@ -14,17 +14,16 @@
                 {% for order in orders.all %}
                     <div class="account__order">
                         <div class="account__order__header">
-                            <p>Заказ номер:
+                            <p>Заказ #
                                 <a href="{% url 'shop:order_history' order.id %}">
-                                    {{ order.id }}
+                                    <b>{{ order.id }}</b> 
                                 </a>
-                            </p>
-                            <p>от: {{ order.created_at }}</p>
+                            Дата оформления: {{ order.created_at }}
                         </div>
                         <div class="account__order__body">
                             {% for item in order.items.all %}
                                 <div class="account__order__item">
-                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="50px">
+                                    <a href="{% url 'shop:order_history' order.id %}"> <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="50px"></a>
                                 </div>
                             {% endfor %}
                         </div>
