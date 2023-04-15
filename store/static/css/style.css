@@ -100,7 +100,7 @@ header{
 
 .title__text h1{	
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	right: 200px;
 	font-size: 50px;
 	font-weight: 800;
@@ -108,7 +108,7 @@ header{
 }
 .title__text h3{
 	position: absolute;
-	top: 60%;
+	top: 50%;
 	right: 130px;
 	font-size: 30px;
 	font-weight: 800;
@@ -129,6 +129,13 @@ header{
     flex-wrap: wrap;
     justify-content: space-between;
 	margin-bottom: 80px;
+	transition: .35s;
+	cursor: pointer;
+}
+
+.title-row:hover > :not(:hover){
+	opacity: .4;
+	transform: scale(0.9);
 }
 
 .title__column {
@@ -155,22 +162,20 @@ header{
     height: 100%;
 }
 
-.title-image img:hover{
-	transform: scale(1.1);
-	backface-visibility: visible;
-	transition-duration: 0.5s;
-}
+
 
 .title-info {
     position: absolute;
-    bottom: 0;
+    bottom: 150px;
     left: 0;
     width: 100%;
     color: #000000;
     box-sizing: border-box;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.8);
-	text-align: left;
+	text-align: center;
+	font-weight: 700;
+	font-size: 20px;
 }
 
 .title-info a{
