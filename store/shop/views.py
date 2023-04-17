@@ -42,7 +42,9 @@ def product_list_3(request):
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    return render(request, 'shop/product_detail.html', {'product': product})
+    colors = product.color.split(',') if product.color else []
+    sizes = product.size.split(',') if product.size else []
+    return render(request, 'shop/product_detail.html', {'product': product, 'colors': colors, 'sizes': sizes})
 
 @login_required
 def cart_detail(request):

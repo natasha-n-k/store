@@ -20,4 +20,6 @@ class OrderCreateForm(forms.ModelForm):
 
 class CartAddProductForm(forms.Form):
     quantity = forms.IntegerField(min_value=1)
+    color = forms.CharField(max_length=50)
+    size = forms.CharField(max_length=10)
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
