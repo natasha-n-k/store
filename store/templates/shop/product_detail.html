@@ -11,20 +11,24 @@
       <div class="detail">
         <div class="detail__name">
           <h1>{{ product.name }}</h1>
-          <p>{{ product.price }} руб.</p>
+          
           <form method="post" action="{% url 'shop:cart_add' product.id %}">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ product.id }}">
             <div class="detail__form">
-                <label for="id_quantity">Количество:</label>
-                <input type="number" name="quantity" id="id_quantity" min="1" value="1">
+              <label>Размер:</label><br><br>
+              {% for size in sizes %}
+                <label>
+                  <input class="detail__form__size" type="radio" name="size" value="{{ size }}" {% if forloop.first %}checked{% endif %}>
+                  {{ size }}
+                </label>
+              {% endfor %}
             </div>
             <div class="detail__form">
-              <label for="id_color">Цвет:</label>
+              <label for="id_color">Цвет:</label><br><br>
               <select name="color" id="id_color">
                 {% for color in colors %}
-                <span class="badge badge-secondary">{{ color }}</span>
-                  <option value="{{ color }}">{{ color }}</option>
+                  <option value="{{ color }}" {% if forloop.first %}selected{% endif %}>{{ color }}</option>
                 {% endfor %}
               </select>
               <div class="color-circles">
@@ -32,15 +36,12 @@
                   <span style="background-color: {{ color }};"></span>
                 {% endfor %}
               </div>
-          </div>
-          <div class="detail__form">
-              <label for="id_size">Размер:</label>
-              <select name="size" id="id_size">
-                {% for size in sizes %}
-                    <option value="{{ size }}">{{ size }}</option>
-                  {% endfor %}
-              </select>
-          </div>
+            </div>
+            <div class="detail__form">
+              <label for="id_quantity">Количество:</label><br><br>
+              <input class="detail__form__quantity" type="number" name="quantity" id="id_quantity" min="1" value="1">
+            </div>
+            <p><b>{{ product.price }}</b> руб.</p>
             <button type="submit" class="btn btn-primary">Добавить в корзину</button>
           </form>
         </div>

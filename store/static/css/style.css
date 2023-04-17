@@ -385,20 +385,30 @@ header{
 }
 
 .detail__name{
-	margin-top: 100px;
+	margin-top: 50px;
     font-size: 16px;
 }
 
 .detail__form{
     font-size: 16px;
+	padding-bottom: 20px;
 }
-
 
 .detail__description{
 	margin-top: 30px;
 	margin-right: 150px;
 	font-size: 16px;
 	line-height: 25px;
+}
+
+.detail__form input[type="number"],
+.detail__form select {
+    display: block;
+    width: 20%;
+    padding: 5px 10px;
+    border: 1px solid #c5b1b1;
+    border-radius: 5px;
+	text-align: center;
 }
 
 .cart__body{
@@ -410,7 +420,6 @@ header{
 	padding-bottom: 100px;
 	text-align: center;
 }
-
 
 .cart__body h1{
 	padding-top: 50px;
@@ -431,7 +440,6 @@ header{
 	border-bottom: 3px solid #c5b1b1;
 	border-style: double;
 }
-
 
 ::-webkit-scrollbar {
     width: 6px;
