@@ -3,6 +3,39 @@
 
 {% block content %}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  // Обработчик событий для поля количества
+  $('.quantity-input').on('input', function() {
+    var form = $(this).closest('form');
+    var data = {
+      'product_id': form.find('input[name="product_id"]').val(),
+      'action': 'update',
+      'quantity': $(this).val(),
+      'color': form.find('select[name="color"] option:selected').val(),
+      'size': form.find('input[name="size"]:checked').val()
+    };
+    $.ajax({
+      url: form.attr('action'),
+      type: form.attr('method'),
+      data: data,
+      success: function(response) {
+        // Обновление стоимости и общей стоимости в таблице
+        var row = $(response).find('tr[data-item-id="' + form.data('item-id') + '"]');
+        var price = row.find('.price').text();
+        var total = row.find('.total-price').text();
+        form.closest('tr').find('.price').html(price);
+        form.closest('tr').find('.total-price').html(total);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Ошибка при отправке формы:', errorThrown);
+      }
+    });
+  });
+});
+</script>
+
 <div class="cart__body">
   <h1>Корзина</h1>
   {% if cart %}
@@ -10,23 +43,27 @@
     <tbody>
       {% for item in cart %}
       <tr>
-        <td>{{ item.product.name }}</td>
+        <td>{{ item.product.name }} ({{ item.color }}, {{ item.size }})</td>
+
         <td>
-          <form method="POST" action="{% url 'shop:cart_detail' %}">
+          <form method="POST" action="{% url 'shop:cart_detail' %}" class="update-form">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ item.id }}">
             <input type="hidden" name="action" value="update">
-            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10" step="1">
-            <button class="cart__update" type="submit">Обновить</button>
+            <input type="hidden" name="color" value="{{ item.product.color }}">
+            <input type="hidden" name="size" value="{{ item.product.size }}">
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10" step="1" class="quantity-input">
           </form>
         </td>
-        <td>{{ item.product.price }} руб.</td>
-        <td>{{ item.get_total_price }} руб.</td>
+        <td class="price">{{ item.product.price }} руб.</td>
+        <td class="total-price">{{ item.get_total_price }} руб.</td>
         <td>
           <form method="POST" action="{% url 'shop:cart_detail' %}">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ item.id }}">
             <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="color" value="{{ item.product.color }}">
+            <input type="hidden" name="size" value="{{ item.product.size }}">
             <button class="cart__delete" type="submit">Удалить</button>
           </form>
         </td>
@@ -34,7 +71,7 @@
       {% endfor %}
     </tbody>
   </table>
-  <p class="cart__price">К оплате:   {{ cart.get_cart_total}} руб.</p>
+  <p class="cart__price">К оплате: {{ cart.0.get_cart_total }} руб.</p>
   <form class="cart__checkout" method="post" action="{% url 'shop:checkout' %}">
     {% csrf_token %}
     <button class="cart__checkout__button">Оформить заказ</button>

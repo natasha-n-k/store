@@ -1,6 +1,32 @@
 {% extends 'shop/base.html' %}
+<script>
+  $(document).ready(function() {
+    $('.add-to-cart-btn').on('click', function() {
+      var form = $(this).closest('form');
+      var data = {
+        'product_id': form.find('input[name="product_id"]').val(),
+        'color': form.find('select[name="color"] option:selected').val(),
+        'size': form.find('input[name="size"]:checked').val(),
+        'quantity': form.find('input[name="quantity"]').val(),
+        'csrfmiddlewaretoken': '{{ csrf_token }}'
+      };
+      $.ajax({
+        url: form.attr('action'),
+        type: form.attr('method'),
+        data: data,
+        success: function(response) {
+          console.log('Товар успешно добавлен в корзину.');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log('Ошибка при добавлении товара в корзину:', errorThrown);
+        }
+      });
+      return false;
+    });
+  });
+  </script>
+{% block content %}
 <main class="main">
-  {% block content %}
   <div class="detail__body">
     <div class="detail__row">
       <div class="detail">
@@ -11,7 +37,6 @@
       <div class="detail">
         <div class="detail__name">
           <h1>{{ product.name }}</h1>
-          
           <form method="post" action="{% url 'shop:cart_add' product.id %}">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ product.id }}">
@@ -38,18 +63,14 @@
               </div>
             </div>
             <div class="detail__form">
-              <label for="id_quantity">Количество:</label><br><br>
-              <input class="detail__form__quantity" type="number" name="quantity" id="id_quantity" min="1" value="1">
+              <label for="id_quantity">Количество:</label><br>
+              <input type="number" name="quantity" id="id_quantity" value="1" min="1" max="10" step="1">
             </div>
-            <p><b>{{ product.price }}</b> руб.</p>
-            <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+            <button type="submit" class="btn btn-primary add-to-cart-btn">Добавить в корзину</button>
           </form>
         </div>
-        <div class="detail__description">
-          <p>{{ product.description }}</p>
-        </div>
-      </div>  
+      </div>
     </div>
   </div>
-  {% endblock %}
 </main>
+{% endblock %}

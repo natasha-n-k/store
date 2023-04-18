@@ -144,12 +144,14 @@ def user_logout(request):
 @require_POST
 def cart_add(request, product_id):
     product = Product.objects.get(id=product_id)
-    cart = Cart.objects.filter(user=request.user, product=product).first()
+    color = request.POST.get('color')
+    size = request.POST.get('size')
+    cart = Cart.objects.filter(user=request.user, product=product, color=color, size=size).first()
     if cart:
         cart.quantity += 1
         cart.save()
     else:
-        cart = Cart.objects.create(user=request.user, product=product)
+        cart = Cart.objects.create(user=request.user, product=product, color=color, size=size)
     return redirect('shop:cart_detail')
 
 @require_POST
