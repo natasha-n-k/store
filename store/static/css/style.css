@@ -468,13 +468,25 @@ header{
 
 .cart__body td {
 	border: 2px solid #f7eef9;
-	padding-left: 15px;
+	text-align: center;
 	width: 17%;
 }
 
 .cart__body td:first-child{
 	width: 650px;
+	padding-left: 15px;
 }
+
+.cart__body form input[type="number"] {
+    display: block;
+    width: 50%;
+    padding: 5px;
+	margin-left: 40px;
+    border: 1px solid #c5b1b1;
+    border-radius: 5px;
+	text-align: center;
+}
+
 
 .cart__update{
 	padding: 8px 9px;

@@ -43,8 +43,7 @@ $(document).ready(function() {
     <tbody>
       {% for item in cart %}
       <tr>
-        <td>{{ item.product.name }} ({{ item.color }}, {{ item.size }})</td>
-
+        <td>{{ item.product.name }} <br> {{ item.color }}, {{ item.size }}</td>
         <td>
           <form method="POST" action="{% url 'shop:cart_detail' %}" class="update-form">
             {% csrf_token %}
