@@ -641,34 +641,46 @@ header{
 }
 
 .checkout__body h2{
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 30px;
+	padding-bottom: 20px;
 	font-size: 25px;
 	font-weight: 700;
 }
 
 .checkout__body form{
-	text-align: left;
-	padding-left: 400px;
-	margin: 10px;
-	line-height: 25px;
-}
-
-.checkout__body label{
-	padding-left: 200px;
-    margin: 20px;
-}
-
-.checkout__body button{
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: center;
+	margin: 10px auto;
+	max-width: 400px;
+	line-height: 16px;
+  }
+  
+  .checkout__body label{
+	width: 200px;
+	margin: 5px;
+  }
+  
+  .checkout__body input[type="text"],
+  .checkout__body input[type="email"],
+  .checkout__body input[type="number"]{
+	width: 100%;
+	padding: 5px;
+	border: 1px solid #c5b1b1;
+	border-radius: 5px;
+  }
+  
+  .checkout__body button{
 	display: block;
-	margin: 30px 250px;
+	margin: 30px auto;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
 	background-color: #000000;
 	color: #f7eef9;
 	font-size: 18px;
-}
+  }
 
 
 .account__body{
