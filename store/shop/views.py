@@ -111,8 +111,8 @@ def order_create(request):
                     product=item.product,
                     quantity=item.quantity,
                     price=item.product.price,
-                    color=item.color,  # add color information
-                    size=item.size,  # add size information
+                    color=item.color, 
+                    size=item.size, 
                 )
             cart.delete()
             return redirect(reverse('shop:order_history', args=[order.id]))

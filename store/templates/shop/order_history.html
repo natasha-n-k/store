@@ -15,7 +15,7 @@
       <tbody>
         {% for item in order.items.all %}
         <tr>
-          <td>{{ order.created_at }} </td>
+          <td>{{ order.created|date:'d.m.Y'}} </td>
           <td>{{ item.product.name }}<br>{{ item.color }},  {{ item.size }}</td>
           <td>{{ item.product.price }}</td>
           <td>{{ item.quantity }}</td>
