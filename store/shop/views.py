@@ -94,6 +94,7 @@ def signup(request):
         form.fields['password2'].label = 'Подтверждение пароля'
         form.fields['password2'].help_text = 'Введите пароль, который вы ввели выше, для проверки.'
     return render(request, 'shop/signup.html', {'form': form})
+
 @login_required
 @require_POST
 def order_create(request):
@@ -109,7 +110,9 @@ def order_create(request):
                     order=order,
                     product=item.product,
                     quantity=item.quantity,
-                    price=item.product.price
+                    price=item.product.price,
+                    color=item.color,  # add color information
+                    size=item.size,  # add size information
                 )
             cart.delete()
             return redirect(reverse('shop:order_history', args=[order.id]))

@@ -1,7 +1,7 @@
 {% extends 'shop/base.html' %}
 {% block content %}
 <div class="history__body">
-    <h1>Ваш заказ № {{ order.id }}</h1>
+    <h1>Ваш заказ # {{ order.id }}</h1>
     {% if order %}
     <table class="history__table">
       <thead>
@@ -15,8 +15,8 @@
       <tbody>
         {% for item in order.items.all %}
         <tr>
-          <td>{{ order.created_at }}</td>
-          <td>{{ item.product.name }}</td>
+          <td>{{ order.created_at }} </td>
+          <td>{{ item.product.name }}<br>{{ item.color }},  {{ item.size }}</td>
           <td>{{ item.product.price }}</td>
           <td>{{ item.quantity }}</td>
         </tr>
