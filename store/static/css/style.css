@@ -74,13 +74,16 @@ header{
 .header__outer {
 
 }
+
 .header__list{
 	text-align: left;
 }
 
+
 .top__level {
 	display: inline;
 }
+
 .top__level a{
 	color: #f7eef9;
 	font-size: 16px;
@@ -272,6 +275,7 @@ header{
 	padding-top: 50px;
 	padding-bottom: 80px;
 }
+
 .product-row {
     display: flex;
     flex-wrap: wrap;
@@ -290,8 +294,8 @@ header{
 
 .product-image {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     top: 0;
     left: 0;
     object-fit: cover;
@@ -299,7 +303,7 @@ header{
 
 .product-image img {
     max-width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .product-info {
@@ -317,7 +321,6 @@ header{
 .product-info a{
 	color: #000000;
 }
-
 
 .detail__body{
 	background-color: #f7eef9;
@@ -553,7 +556,6 @@ header{
 	background-color: #f7eef9;
 	padding-top: 50px;
 	padding-bottom: 10px;
-	position: relative;
 	height: 700px;
 	padding-bottom: 100px;
 	font-size: 16px;
@@ -569,14 +571,26 @@ header{
 
 .signup__body form{
 	text-align: left;
-	padding-left: 400px;
+	padding-left: 40%;
 	margin: 10px;
 	line-height: 25px;
 }
 
+.signup__form__group{
+	margin-bottom: 10px;
+}
+
+.signup__form__group input{
+	margin-left: 10px;
+	height: 20px;
+	max-width: 300px;
+	border-radius: 5px;
+}
+
+
 .signup__body button{
 	display: block;
-	margin: 30px 250px;
+	margin: 30px;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
@@ -585,7 +599,13 @@ header{
 	font-size: 18px;
 }
 
+.signup__in{
+	margin-left: 25px;
+}
 
+.signup__in a{
+	color: #000;
+}
 
 .login__body{
 	background-color: #f7eef9;
@@ -655,23 +675,23 @@ header{
 	margin: 10px auto;
 	max-width: 400px;
 	line-height: 16px;
-  }
-  
-  .checkout__body label{
+}
+
+.checkout__body label{
 	width: 200px;
 	margin: 5px;
-  }
-  
-  .checkout__body input[type="text"],
-  .checkout__body input[type="email"],
-  .checkout__body input[type="number"]{
+}
+
+.checkout__body input[type="text"],
+.checkout__body input[type="email"],
+.checkout__body input[type="number"]{
 	width: 100%;
 	padding: 5px;
 	border: 1px solid #c5b1b1;
 	border-radius: 5px;
-  }
-  
-  .checkout__body button{
+}
+
+.checkout__body button{
 	display: block;
 	margin: 30px auto;
 	text-align: center;
@@ -680,7 +700,7 @@ header{
 	background-color: #000000;
 	color: #f7eef9;
 	font-size: 18px;
-  }
+}
 
 
 .account__body{
