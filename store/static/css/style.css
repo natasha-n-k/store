@@ -73,19 +73,41 @@ header{
 	left: 0;
 	width: 100%;
 	z-index: 999;
+	display: flex;
+	justify-content: space-between;
 }
 
 .header__container {
-	background-color: #000000;	
+	background-color: #000000;
+	height: 50px;
 }
-.header__outer {
 
+.header__inner {
+	padding: 5px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100%;
+}
+
+.header__logo{
+	color: #f7eef9;
+	font-size: 25px;
+	margin-left: 30px;
+	margin-right: 20px;
 }
 
 .header__list{
-	text-align: left;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	height: 100%;
+	box-sizing: border-box;
+	justify-content: flex-end; /* Добавляем этот стиль */
 }
-
 
 .top__level {
 	display: inline;
@@ -96,11 +118,6 @@ header{
 	font-size: 16px;
 	display: inline-block;
 	padding: 10px;
-}
-.top__level p{
-	font-size: 25px;
-	margin-left: 30px;
-	margin-right: 20px;
 }
 
 .title{
@@ -202,7 +219,7 @@ header{
 	padding: 30px 30px 10px 30px;
 	font-size: 14px;
 	text-align: center;
-	position: fixed;
+	position: relative;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -238,7 +255,6 @@ header{
 .logo{
 	font-weight: 600;
 	font-size: 15px;
-	
 	position: absolute;
 	right: 30px;
 	bottom: 30px;
@@ -334,7 +350,7 @@ header{
 	padding-top: 50px;
 	padding-bottom: 10px;
 	position: relative;
-	height: 900px;
+	height: 800px;
 }
 
 .detail__row {
