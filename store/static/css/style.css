@@ -54,16 +54,125 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     font-style: italic;
 }
 
+/* For devices with a screen width of 768 pixels or less */
+@media screen and (max-width: 768px) {
+
+	.header__container{
+		max: width 100%;
+	}
+
+    .header__logo {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+	.header__list {
+		display: none;
+	}
+	
+	.header__burger {
+		display: block;
+		background-color: #000000;
+		height: 50px;
+		padding: 10px;
+		position: fixed;
+		top: 0;
+		right: 0;
+		cursor: pointer;
+	}
+	
+	.header__burger div {
+		width: 25px;
+		height: 3px;
+		background-color: #f7eef9;
+		margin: 5px;
+	}
+	
+	.header__burger.active + .header__list {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 50px;
+		right: 0;
+		width: 100%;
+		background-color: #000000;
+		padding: 20px;
+		box-sizing: border-box;
+		z-index: 1;
+	}
+	
+	.header__burger.active div:first-child {
+		transform: rotate(-45deg) translate(-5px, 6px);
+	}
+	
+	.header__burger.active div:nth-child(2) {
+		opacity: 0;
+	}
+
+	.header__burger.active div:last-child {
+		transform: rotate(45deg) translate(-5px, -6px);
+	}
+
+    .top__level a {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .title__text h1 {
+        font-size: 30px;
+        right: 30px;
+    }
+    .title__text h3 {
+        font-size: 20px;
+        right: 30px;
+    }
+    .title-row {
+        margin-bottom: 40px;
+    }
+    .title__column {
+        width: calc(50% - 5px);
+        height: 400px;
+        margin: 0;
+        margin-bottom: 5px;
+		height: 300px;
+    }
+    .clothes__row {
+        display: block;
+    }
+    .clothes__column {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+    .clothes__content {
+        padding-bottom: 60%;
+    }
+}
+
+/* For devices with a screen width of 1024 pixels or less */
+@media screen and (max-width: 1024px) {
+    .header__list {
+        max-width: 100%;
+    }
+    .title__column {
+        height: 500px;
+    }
+}
+
+
+/* For devices with a screen width of 1920 pixels or less */
+@media screen and (max-width: 1920px) {
+    .clothes__column {
+        flex: 0 0 33.333%;
+    }
+}
 
 body{
 	font-family: 'Kosugi Maru', sans-serif;
-	max-width: 100%;
 }
 
 main{
 	max-width: 100%;
-	margin: 10px, 20px;
 }
+
 
 header{
 	background-color: #000000;
@@ -80,6 +189,7 @@ header{
 .header__container {
 	background-color: #000000;
 	height: 50px;
+	max-width: 100%;
 }
 
 .header__inner {
@@ -101,7 +211,7 @@ header{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1200px;
+	max-width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
 	height: 100%;
@@ -194,7 +304,6 @@ header{
 }
 
 
-
 .title-info {
     position: absolute;
     bottom: 150px;
@@ -216,18 +325,20 @@ header{
 .contacts{
 	background-color: #000000;
 	color: #f7eef9;
-	padding: 30px 30px 10px 30px;
 	font-size: 14px;
 	text-align: center;
 	position: relative;
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	height: 100px;
 	line-height: 20px;
 }
+
 .contacts__container{
 	display: flex;
-	width: 800px;
+	max-width: 100%;
+	padding-top: 20px;
 }
 .contacts__item__1{
 	flex-basis: 200px;
