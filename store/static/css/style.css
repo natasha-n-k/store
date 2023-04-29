@@ -188,11 +188,28 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 		padding: 5px;
 	}
     
-
 	.signup__body{
 		height: 300px;
 	}
-
+	
+	.account__body{
+		height: 435px;
+		background-image: none;
+	}
+	.account__hello{
+		font-size: 17px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 50px;
+	}
+	.account__orders{
+		margin-top: 10px;
+		width: 400px;
+		height: 150px;
+	}
+	.account__top{
+		margin-left: 15%;
+	}
 }
 
 /* For devices with a screen width of 1024 pixels or less */
@@ -221,6 +238,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     .clothes__column {
         flex: 0 0 33.333%;
     }
+
 }
 
 body{
@@ -894,14 +912,14 @@ header{
 
 
 .account__body{
-	background-color: #f7eef9;
+	background-color: #b48484;
 	padding-top: 50px;
 	position: relative;
-	height: 700px;
+	max-height: 700px;
 	padding-bottom: 100px;
 	background-image:  url('../../static/img/100.jpg');
 	background-size: 100%;
-    background-repeat: no-repeat;
+
 }
 
 .account__hello{
@@ -910,35 +928,31 @@ header{
 	padding-top: 40px;
 	padding-bottom: 30px;
 	padding-left: 100px;
-
 }
 
 .account__hello h1{
 	padding-bottom: 10px;
 	font-size: 25px;
 	font-weight: 700;
-	padding-left: 110px;
+	padding-left: 10%;
 }
 
 .account__top{
-	position: absolute;
-	left: 330px;
+	margin-left: 22%;
 	font-size: 20px;
-
 }
 
 .account__orders{
 	margin-top: 40px;
 	max-height: 350px;
 	overflow-y: auto;
-	width: 750px;
+	max-width: 750px;
 	margin-left: 65px;
 	border: 2px solid #f7eef9;
 	border-radius: 4px;
 	text-align: center;
 	padding-left: 10px;
 	background-image: image(1.jpg);
-	
 }
 
 .account__order{
@@ -973,10 +987,9 @@ header{
 
 .account__button{
 	display: block;
-	margin: 100px;
-	margin-left: 50%;
+	margin-bottom: 15px;
 	text-align: center;
-	padding: 10px 25px;
+	padding: 10px 15px;
 	border-radius: 4px;
 	background-color: #000000;
 	color: #f7eef9;
