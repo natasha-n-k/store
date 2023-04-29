@@ -56,9 +56,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /* For devices with a screen width of 768 pixels or less */
 @media screen and (max-width: 768px) {
-
+	main {
+	}
+	
 	.header__container{
-		max: width 100%;
+		max-width: 100%;
 	}
 
     .header__logo {
@@ -117,6 +119,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
         padding: 5px;
     }
 
+    .title{
+		max-height: 400px;
+	}
+
     .title__text h1 {
         font-size: 30px;
         right: 30px;
@@ -126,25 +132,67 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
         right: 30px;
     }
     .title-row {
-        margin-bottom: 40px;
+    
     }
     .title__column {
         width: calc(50% - 5px);
-        height: 400px;
         margin: 0;
         margin-bottom: 5px;
-		height: 300px;
+		max-height: 270px;
     }
+
+    .title-info {
+		bottom: 50px;
+		position: absolute;
+	}
+
+	.contacts{
+		max-width: 100%;
+	}
+
+	.contacts__item__1{
+		flex-basis: 100px;
+	}
+	
+	.contacts__item__2{
+		flex-basis: 100px;
+	}
+
+	.contacts__item__3{
+		flex-basis: 100px;
+	}
+
+    .logo{
+		font-weight: 600;
+		font-size: 15px;
+		position: absolute;
+		right: 60px;
+		bottom: 20px;
+	}
+
     .clothes__row {
         display: block;
     }
     .clothes__column {
         flex: 0 0 100%;
-        margin-bottom: 20px;
     }
     .clothes__content {
         padding-bottom: 60%;
     }
+	.product{
+		max-height: 300px;
+	}
+
+	.product-info {
+		font-size: 12px;
+		padding: 5px;
+	}
+    
+
+	.signup__body{
+		height: 300px;
+	}
+
 }
 
 /* For devices with a screen width of 1024 pixels or less */
@@ -155,6 +203,16 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     .title__column {
         height: 500px;
     }
+
+	.title-info {
+	
+	}
+
+	.product {
+		max-height: 470px;
+	}
+
+
 }
 
 
@@ -167,6 +225,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 body{
 	font-family: 'Kosugi Maru', sans-serif;
+
 }
 
 main{
@@ -235,7 +294,7 @@ header{
 	background-size: 100%;
     background-repeat: no-repeat;
 	position: relative;
-	height: 800px;
+	height: 580px;
 	margin-top: 50px;
 }
 
@@ -281,7 +340,7 @@ header{
 
 .title__column {
     width: calc(33.33% - 10px);
-    height: 600px;
+    height: 380px;
     margin: 1px;
     vertical-align: top;
     text-align: center;
@@ -306,7 +365,7 @@ header{
 
 .title-info {
     position: absolute;
-    bottom: 150px;
+    bottom: 100px;
     left: 0;
     width: 100%;
     color: #000000;
@@ -330,7 +389,7 @@ header{
 	position: relative;
 	left: 0;
 	bottom: 0;
-	width: 100%;
+	max-width: 100%;
 	height: 100px;
 	line-height: 20px;
 }
@@ -340,6 +399,7 @@ header{
 	max-width: 100%;
 	padding-top: 20px;
 }
+
 .contacts__item__1{
 	flex-basis: 200px;
 	
@@ -363,6 +423,7 @@ header{
 	box-shadow: 0 0 10px 4px #f7eef9;
 	transition-duration: 0,5s;
 }
+
 .logo{
 	font-weight: 600;
 	font-size: 15px;
@@ -407,7 +468,6 @@ header{
 
 .basis{
 	padding-top: 50px;
-	padding-bottom: 80px;
 }
 
 .product-row {
@@ -685,7 +745,6 @@ header{
 }
 
 
-
 .signup__body{
 	background-color: #f7eef9;
 	padding-top: 50px;
@@ -703,12 +762,6 @@ header{
 	font-weight: 700;
 }
 
-.signup__body form{
-	text-align: left;
-	padding-left: 40%;
-	margin: 10px;
-	line-height: 25px;
-}
 
 .signup__form__group{
 	margin-bottom: 10px;
@@ -725,6 +778,7 @@ header{
 .signup__body button{
 	display: block;
 	margin: 30px;
+	margin-left: 40%;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
@@ -734,7 +788,7 @@ header{
 }
 
 .signup__in{
-	margin-left: 25px;
+	text-align: center;
 }
 
 .signup__in a{
@@ -920,7 +974,7 @@ header{
 .account__button{
 	display: block;
 	margin: 100px;
-	margin-left: 10px;
+	margin-left: 50%;
 	text-align: center;
 	padding: 10px 25px;
 	border-radius: 4px;
