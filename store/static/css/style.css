@@ -56,8 +56,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /* For devices with a screen width of 768 pixels or less */
 @media screen and (max-width: 768px) {
-	main {
-	}
 	
 	.header__container{
 		max-width: 100%;
@@ -210,6 +208,17 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	.account__top{
 		margin-left: 15%;
 	}
+
+    .cart__body{
+        width: 100%;
+	}
+	.cart__body table {
+		margin-left: 20px;
+
+	}
+
+
+
 }
 
 /* For devices with a screen width of 1024 pixels or less */
@@ -408,7 +417,7 @@ header{
 	left: 0;
 	bottom: 0;
 	max-width: 100%;
-	height: 100px;
+	max-height: 100px;
 	line-height: 20px;
 }
 
@@ -629,11 +638,11 @@ header{
 .cart__body{
 	background-color: #f7eef9;
 	padding-top: 50px;
-	padding-bottom: 10px;
 	position: relative;
 	height: 700px;
 	padding-bottom: 100px;
 	text-align: center;
+	max-width: 100%;
 }
 
 .cart__body h1{
@@ -644,16 +653,17 @@ header{
 }
 
 .cart__body table {
-	table-layout: fixed;
-	width: 60%;
+	table-layout: auto;
+	max-width: 700px;
+	margin: 0 auto;
 	border-collapse: collapse;
 	border: 3px solid #f7eef9;
-	margin-left: 310px;
 	max-height: 300px;
 	overflow-y: auto;
 	display: flex;
 	border-bottom: 3px solid #c5b1b1;
 	border-style: double;
+	padding: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -684,55 +694,52 @@ header{
 .cart__body td {
 	border: 2px solid #f7eef9;
 	text-align: center;
-	width: 17%;
+	
 }
 
 .cart__body td:first-child{
-	width: 650px;
+	width: 35%;
 	padding-left: 15px;
+	text-align: left;
 }
 
 .cart__body form input[type="number"] {
     display: block;
     width: 50%;
     padding: 5px;
-	margin-left: 40px;
-    border: 1px solid #c5b1b1;
+	margin: 15px;
+    border: 1px solid #000;
     border-radius: 5px;
 	text-align: center;
 }
 
-
 .cart__update{
 	padding: 8px 9px;
 	border-radius: 4px;
+	
 	background-color: #f7eef9;
 }
 
 .cart__delete{
 	padding: 8px 9px;
+	border: 1px solid #000;
 	border-radius: 4px;
 	background-color: #f7eef9;
 }
 
 .cart__price{
-	position: fixed;
-	bottom: 240px;
-	left: 660px;
+    padding-top: 20px;
 	font-size: 16px;
 	font-weight: 700;
 }
 
 .cart__checkout{
-	position: fixed;
 	margin: 20px;
-	padding: 10px 25px;
+	padding: 5px 25px;
 	border-radius: 4px;
-	background-color: #000000;
 	color: #f7eef9;
 	font-size: 16px;
-	left: 630px;
-	bottom: 140px;
+
 }
 
 .cart__checkout__button{
