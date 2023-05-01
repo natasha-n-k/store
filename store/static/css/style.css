@@ -367,7 +367,7 @@ header{
 
 .title__column {
     width: calc(33.33% - 10px);
-    height: 380px;
+    height: 500px;
     margin: 1px;
     vertical-align: top;
     text-align: center;
@@ -435,6 +435,9 @@ header{
 	flex-basis: 200px;
 }
 .contacts__item__3{
+	flex-basis: 300px;
+}
+.contacts__item__4{
 	flex-basis: 300px;
 }
 .contacts__item a{
