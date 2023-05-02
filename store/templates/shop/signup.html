@@ -3,7 +3,7 @@
 {% block content %}
 <div class="signup__body">
   <h2>Регистрация</h2>
-  <form method="post" action="{% url 'shop:login' %}">
+  <form method="post" action="{% url 'shop:signup' %}">
     {% csrf_token %}
     <div class="signup__form__group">
       <label for="id_username">Имя пользователя:</label>
@@ -16,8 +16,7 @@
     </div>
     <div class="signup__form__group">
       <label for="id_password">Пароль:</label>
-      <input type="password" name="password" class="form-control" required minlength="8" 
-        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" 
+      <input type="password" name="password1" class="form-control" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" 
         title="Минимум 8 символов, должен содержать хотя бы одну цифру, одну маленькую букву и одну большую букву. Не должен содержать пробелов." />
     </div>
     <div class="signup__form__group">

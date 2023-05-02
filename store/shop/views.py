@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
-from .models import Product, Order, OrderItem, Cart
+from .models import Product, Order, OrderItem, Cart, UserCreationForm
 from .forms import UserCreationForm, OrderCreateForm, CartAddProductForm
 from django.contrib.auth.views import LoginView
 
@@ -83,6 +83,10 @@ def signup(request):
             user = form.save()
             messages.success(request, 'Вы успешно зарегистрировались!')
             return redirect('shop:login')
+        else:
+            for field_name, errors in form.errors.items():
+                for error in errors:
+                    messages.warning(request, f"Ошибка в поле '{form.fields[field_name].label}': {error}")
     else:
         form = UserCreationForm()
         form.fields['username'].label = 'Имя пользователя'
