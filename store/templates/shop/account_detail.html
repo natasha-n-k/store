@@ -4,37 +4,44 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div class="account__body">
-            <div class="account__hello">
-                <h1>Добро пожаловать в личный кабинет </h1>
-            </div>
-            <div class="account__top">
-                <p>История ваших покупок</p>
-            </div>
-            <div class="account__orders">
-                {% for order in orders.all %}
-                    <div class="account__order">
-                        <div class="account__order__header">
-                            <p>Заказ #
-                                <a href="{% url 'shop:order_history' order.id %}">
-                                    <b>{{ order.id }}</b> 
-                                </a>
-                            Дата оформления: {{ order.created_at }}
-                        </div>
-                        <div class="account__order__body">
-                            {% for item in order.items.all %}
-                                <div class="account__order__item">
-                                    <a href="{% url 'shop:order_history' order.id %}"> <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="50px"></a>
+            <div class="account__container">
+                <div class="account__content">
+                    <div class="account__hello">
+                        <h1>Добро пожаловать в личный кабинет </h1>
+                    </div>
+                    <div class="account__top">
+                        <p>История ваших покупок</p>
+                    </div>
+                    <div class="account__orders">
+                        {% for order in orders.all %}
+                            <div class="account__order">
+                                <div class="account__order__header">
+                                    <p>Заказ #
+                                        <a href="{% url 'shop:order_history' order.id %}">
+                                            <b>{{ order.id }}</b> 
+                                        </a>
+                                    Дата оформления: {{ order.created_at }}
                                 </div>
-                            {% endfor %}
+                                <div class="account__order__body">
+                                    {% for item in order.items.all %}
+                                        <div class="account__order__item">
+                                            <a href="{% url 'shop:order_history' order.id %}"> <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="50px"></a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="account__out">
+                            <form method="post" action="{% url 'shop:logout' %}">
+                                {% csrf_token %}
+                                <button class="account__button" type="submit">Выйти</button>
+                            </form>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="account__out">
-                <form method="post" action="{% url 'shop:logout' %}">
-                    {% csrf_token %}
-                    <button class="account__button" type="submit">Выйти</button>
-                </form>
+                </div>
+                <div class="account__image">
+                    <img src="{% static 'img/102.jpg' %}"  alt="" >
+                </div>
             </div>
         </div>
     {% else %}
