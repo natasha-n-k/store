@@ -60,7 +60,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	.header__container{
 		max-width: 100%;
 	}
-
     .header__logo {
         margin-left: 10px;
         margin-right: 10px;
@@ -205,16 +204,13 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 		height: 300px;
 	}
 	
-	.account__body{
-		height: 435px;
-		background-image: none;
-	}
+
 	.account__hello{
 		font-size: 17px;
 		padding-top: 10px;
 	}
 	.account__orders{
-		margin-top: 10px;
+		margin: 10px;
 		width: 400px;
 		height: 100px;
 	}
