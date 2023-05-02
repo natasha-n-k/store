@@ -1,43 +1,56 @@
 {% load static %}
+
 <header>
-    <div class="header__container">
-		<div class="header__outer">
-			<div class="header__inner">
-					<a class="header__logo" href="{% url 'shop:shop' %}">
-						Moonstone
-					</a>
-				<nav>
-					<ul class="header__list">
-						<li class="top__level">
-							<a href="{% url 'shop:product_list_1' %}">
-								Новинки
-							</a>
-						</li>
-						<li class="top__level">
-							<a href="{% url 'shop:product_list_2' %}">
-								Одежда
-							</a>
-						</li>
-						<li class="top__level">
-							<a href="{% url 'shop:product_list_3' %}">
-								Аксессуары
-							</a>
-						</li>
-						<li class="top__level">
-							<a href="{% url 'shop:account_detail' %}">
-								Личный кабинет
-							</a>
-						</li>
-						<li class="top__level">
-							<a href="{% url 'shop:cart_detail' %}">
-								Корзина
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
+  <div class="header__container">
+    <div class="header__outer">
+      <div class="header__inner">
+        <a class="header__logo" href="{% url 'shop:shop' %}">
+          Moonstone
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="top__level">
+              <a href="{% url 'shop:product_list_1' %}">
+                Новинки
+              </a>
+            </li>
+            <li class="top__level">
+              <a href="{% url 'shop:product_list_2' %}">
+                Одежда
+              </a>
+            </li>
+            <li class="top__level">
+              <a href="{% url 'shop:product_list_3' %}">
+                Аксессуары
+              </a>
+            </li>
+            <li class="top__level">
+              <a href="{% url 'shop:account_detail' %}">
+                Личный кабинет
+              </a>
+            </li>
+            <li class="top__level">
+              <a href="{% url 'shop:cart_detail' %}">
+                Корзина
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
-
-
+<script>
+	const headerToggle = document.querySelector('.header__toggle');
+	const headerList = document.querySelector('.header__list');
+  
+	headerToggle.addEventListener('click', () => {
+	  headerToggle.classList.toggle('is-active');
+	  headerList.classList.toggle('is-active');
+	});
+  </script>
