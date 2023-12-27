@@ -760,7 +760,39 @@ header {
 	padding-right: 1em;
 }
 
-.detail__image {}
+.pagination {
+  text-align: center;
+  padding: 10px;
+}
+
+.pagination a {
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px;
+    margin: 1px 2px;
+    padding: 5px 10px;
+    display: inline-block;
+    border-top: 1px solid #fff;
+    text-decoration: none;
+    color: #000;
+    font-size: smaller;
+    text-shadow: white 0 1px 0;
+    background-color: #f7f7f7;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f9f9f9', EndColorStr='#eaeaea'); 
+}
+
+.pagination a.current {
+    background-color: #000; 
+    color: #f7f7f7;  
+}
+
+.pagination a:hover {
+    background-color: #f7f7f7; 
+    color: #000;
+    -webkit-transform: scale(1.1);
+    -ms-ransform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.5s;
+}
 
 .detail__image img {
 	max-width: 600px;

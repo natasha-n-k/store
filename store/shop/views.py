@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
@@ -21,6 +22,17 @@ def product_list_1(request):
         products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
     else:
         products = Product.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products, 9)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     return render(request, 'shop/products_list_1.html', {'products': products})
 
 def product_list_2(request):
