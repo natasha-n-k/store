@@ -16,6 +16,15 @@
             </div>
         </div>
         {% endfor %}
+        <div class="pagination">
+            {% for i in products.paginator.page_range %}
+                {% if products.number == i %}
+                    <a class="current">{{ i }}</a>
+                {% else %}
+                    <a href="?page={{ i }}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %} 

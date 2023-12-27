@@ -41,6 +41,17 @@ def product_list_2(request):
         products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
     else:
         products = Product.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products, 9)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     return render(request, 'shop/products_list_2.html', {'products': products})
 
 def product_list_3(request):
@@ -49,6 +60,17 @@ def product_list_3(request):
         products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
     else:
         products = Product.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products, 9)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+        
     return render(request, 'shop/products_list_3.html', {'products': products})
 
 
