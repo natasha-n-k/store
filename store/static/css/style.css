@@ -763,6 +763,7 @@ header {
 .pagination {
   text-align: center;
   padding: 10px;
+  margin-top: 100px;
 }
 
 .pagination a {
