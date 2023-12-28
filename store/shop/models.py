@@ -11,6 +11,11 @@ fs = FileSystemStorage(location='media/product_images')
 
 
 class Product(models.Model):
+    CATEGORY_CHOICES = (
+        ('clothing', 'Clothing'),
+        ('accessories', 'Accessories'),
+    )
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES,default='Clothing', null=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -22,7 +27,7 @@ class Product(models.Model):
         return self.name
     
     class Meta:
-        ordering = ['id']
+        ordering = ['-id']
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

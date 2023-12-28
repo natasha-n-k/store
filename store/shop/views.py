@@ -19,9 +19,9 @@ def shop(request):
 def product_list_1(request):
     query = request.GET.get('q')
     if query:
-        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        products = Product.objects.all().order_by('-id')[:15]
     else:
-        products = Product.objects.all()
+        products = Product.objects.all().order_by('-id')[:15]
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -38,9 +38,9 @@ def product_list_1(request):
 def product_list_2(request):
     query = request.GET.get('q')
     if query:
-        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        products = Product.objects.filter(category='clothing')
     else:
-        products = Product.objects.all()
+        products = Product.objects.filter(category='clothing')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -57,9 +57,9 @@ def product_list_2(request):
 def product_list_3(request):
     query = request.GET.get('q')
     if query:
-        products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        products = Product.objects.filter(category='accessories')
     else:
-        products = Product.objects.all()
+        products = Product.objects.filter(category='accessories')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
