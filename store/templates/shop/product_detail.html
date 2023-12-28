@@ -42,6 +42,9 @@
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ product.id }}">
         </div>
+        <div class="detail__price">
+          <p><strong>{{ product.price }} руб</strong>.</p>
+        </div>
         <div class="detail__form">
           <label>Размер</label><br><br>
           <div class="sizes">
