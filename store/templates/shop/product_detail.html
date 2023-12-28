@@ -37,21 +37,22 @@
       </div>
       <div class="detail">
         <div class="detail__name">
-          <h1>{{ product.name }}</h1>
+          <h1 style="text-transform: uppercase;">{{ product.name }}</h1>
           <form method="post" action="{% url 'shop:cart_add' product.id %}">
             {% csrf_token %}
             <input type="hidden" name="product_id" value="{{ product.id }}">
-            <div class="detail__form">
-              <label>Размер:</label><br><br>
-              {% for size in sizes %}
-                <label>
-                  <input class="detail__form__size" type="radio" name="size" value="{{ size }}" {% if forloop.first %}checked{% endif %}>
-                  {{ size }}
-                </label>
-              {% endfor %}
-            </div>
-            <div class="detail__form">
-              <label for="id_color">Цвет:</label><br><br>
+        </div>
+        <div class="detail__form">
+          <label>Размер</label><br><br>
+          <div class="sizes">
+            {% for size in sizes %}
+              <input type="radio" id="size_{{ size }}" class="detail__form__size" name="size" value="{{ size }}" {% if forloop.first %}checked{% endif %} style="display: none;">
+              <label for="size_{{ size }}" class="size-btn">{{ size }}</label>
+            {% endfor %}
+          </div>
+        </div>        
+        <div class="detail__form">
+              <label for="id_color">Цвет</label><br><br>
               <select name="color" id="id_color">
                 {% for color in colors %}
                   <option value="{{ color }}" {% if forloop.first %}selected{% endif %}>{{ color }}</option>
@@ -62,14 +63,9 @@
                   <span style="background-color: {{ color }};"></span>
                 {% endfor %}
               </div>
-            </div>
-            <div class="detail__form">
-              <label for="id_quantity">Количество:</label><br>
-              <input type="number" name="quantity" id="id_quantity" value="1" min="1" max="10" step="1">
-            </div>
-            <button type="submit" class="btn btn-primary add-to-cart-btn">Добавить в корзину</button>
-          </form>
         </div>
+        <button type="submit" class="btn btn-primary add-to-cart-btn">Добавить в корзину</button>
+          </form>
       </div>
     </div>
   </div>

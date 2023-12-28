@@ -810,7 +810,7 @@ header {
 	margin-top: 30px;
 }
 
-.detail__name button {
+.detail button {
 	padding: 13px;
 	border-radius: 4px;
 	background-color: #000000;
@@ -856,6 +856,28 @@ header {
 	border-radius: 5px;
 	text-align: center;
 }
+
+.size-btn {
+	display: inline-block;
+	width: 35px; 
+	height: 35px;
+	line-height: 35px; 
+	text-align: center;
+	margin: 5px;
+	cursor: pointer;
+	border: 1px solid #000;
+	transition: background-color 0.3s;
+  }
+  
+  .size-btn:hover {
+	background-color: #f2f2f2;
+  }
+  
+  input[type="radio"]:checked + label.size-btn {
+	background-color: #000;
+	color: white;
+  }
+  
 
 .cart__body {
 	background-color: #f7eef9;
