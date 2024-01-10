@@ -1,0 +1,49 @@
+/* Стили для нетбуков */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.header__list {
+		max-width: 100%;
+	}
+
+    .title {
+        height: 500px;
+    }
+
+    .title__text h1 {
+        position: absolute;
+        top: 40%;
+        right: 100px;
+        font-size: 40px;
+        font-weight: 800;
+        font-family: 'Harmonia Sans Pro Cyr', italic;
+    }
+    
+    .title__text h3 {
+        position: absolute;
+        top: 55%;
+        right: 70px;
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'Gilroy-Medium', serif;
+    }
+
+    .title-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        transition: .35s;
+        cursor: pointer;
+    }
+
+	.title__column {
+		height: 400px;
+	}
+
+	.product {
+		max-height: 470px;
+	}
+
+	.detail {
+		width: calc(40% - 10px);
+	}  
+}

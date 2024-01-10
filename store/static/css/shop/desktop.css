@@ -1,0 +1,6 @@
+/* Стили для десктопов */
+@media screen and (min-width: 1024px) {
+	.clothes__column {
+		flex: 0 0 33.333%;
+	}
+}
