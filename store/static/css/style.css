@@ -936,10 +936,11 @@ header {
 }
 
 .account__out {
-	position: fixed;
-	bottom: 150px;
-	right: 20%;
-	transform: translateX(-50%);
+    position: fixed; 
+    bottom: 150px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 999;
 }
 
 .account__button {

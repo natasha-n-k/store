@@ -32,16 +32,16 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="account__out">
-                        <form method="post" action="{% url 'shop:logout' %}">
-                            {% csrf_token %}
-                            <button class="account__button" type="submit">Выйти</button>
-                        </form>
-                    </div>
                 </div>
                 <div class="account__image">
                     <img src="{% static 'img/102.jpg' %}"  alt="" >
                 </div>
+            </div>
+            <div class="account__out">
+                <form method="post" action="{% url 'shop:logout' %}">
+                    {% csrf_token %}
+                    <button class="account__button" type="submit">Выйти</button>
+                </form>
             </div>
         </div>
     {% else %}
