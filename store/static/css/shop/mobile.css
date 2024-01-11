@@ -202,4 +202,36 @@
 		width: 200px;
 		max-height: auto;
 	}
+	
+	.account__container {
+		flex-direction: column; 
+		align-items: center; 
+		justify-content: center; 
+	  }
+	
+	  .account__content,
+	  .account__image {
+		width: 100%;
+		padding: 0;
+	  }
+	
+	  .account__image img {
+		display: none; 
+	  }
+
+	.account__hello {
+		font-size: 17px;
+		padding-top: 10px;
+	}
+
+	.account__orders {
+		margin: 20px;
+		max-width: 350px;
+		max-height: 300px;
+	}
+
+	.account__out {
+		right: 30%;
+		bottom: 80px;
+	}
 }

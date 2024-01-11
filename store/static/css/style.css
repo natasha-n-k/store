@@ -113,7 +113,8 @@ body {
 
 main {
 	max-width: 100%;
-	min-height: calc(100vh - 100px)
+	min-height: calc(100vh);
+	background-color: #FBFBF4;
 }
 
 header {
@@ -851,10 +852,7 @@ header {
 
 
 .account__body {
-	background-color: #f7eef9;
 	padding-top: 50px;
-	position: relative;
-	max-height: 700px;
 	padding-bottom: 100px;
 }
 
@@ -862,7 +860,7 @@ header {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: space-around;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -938,9 +936,9 @@ header {
 }
 
 .account__out {
-	position: absolute;
-	bottom: 0;
-	left: 29%;
+	position: fixed;
+	bottom: 150px;
+	right: 20%;
 	transform: translateX(-50%);
 }
 
