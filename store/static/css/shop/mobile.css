@@ -184,6 +184,7 @@
 	.detail {
 		width: 100%;
 		margin: 0;
+		text-align: center;
 	}
 
 	.detail__row {
@@ -196,6 +197,11 @@
 
 	.detail__form {
 		font-size: 14px;
+	}
+
+	.detail__form input[type="number"],
+	.detail__form select {
+		width: 50%;
 	}
 
 	.detail__image img {
