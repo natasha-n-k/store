@@ -911,13 +911,11 @@ header {
 .account__hello {
 	font-size: 20px;
 	font-weight: 700;
-	padding-top: 40px;
-	padding-bottom: 30px;
+	padding: 30px 10px 10px 10px;
 	text-align: center;
 }
 
 .account__hello h1 {
-	padding-bottom: 10px;
 	font-size: 25px;
 	font-weight: 700;
 }
@@ -963,16 +961,12 @@ header {
 }
 
 .account__out {
-    position: fixed; 
-    bottom: 150px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    z-index: 999;
+    margin: 10px auto;
 }
 
 .account__button {
 	display: block;
-	margin-bottom: 25px;
+	margin: 25px auto;
 	text-align: center;
 	padding: 10px 15px;
 	border-radius: 4px;
