@@ -267,4 +267,27 @@
 		right: 30%;
 		bottom: 80px;
 	}
+
+	.login__body {
+		font-size: 12px;
+	}
+
+	.login__body h1 {
+		font-size: 18px;
+	}
+
+	.signup__body {
+		font-size: 12px;
+	}
+
+	.signup__body h2 {
+		font-size: 18px;
+	}
+
+	.signup__body button {
+		margin: 20px auto;
+		padding: 6px 18px;
+		border-radius: 4px;
+		font-size: 12px;
+	}
 }

@@ -224,4 +224,20 @@
 		max-width: 350px;
 		max-height: auto;
 	}
+
+	.login__body {
+		font-size: 14px;
+	}
+
+	.login__body h1 {
+		font-size: 22px;
+	}
+
+	.signup__body {
+		font-size: 14px;
+	}
+
+	.signup__body h2 {
+		font-size: 22px;
+	}
 }
