@@ -61,7 +61,6 @@ def product_list_3(request):
     color_query = request.GET.get('color')
     size_query = request.GET.get('size')
 
-    # Start with all products in 'accessories'
     products = Product.objects.filter(category='accessories')
 
     if query:
@@ -73,7 +72,6 @@ def product_list_3(request):
     if size_query:
         products = products.filter(size=size_query)
 
-    # Get distinct color and size options from the current product set
     colors = products.values('color').annotate(count=Count('id')).order_by('color')
     sizes = products.values('size').annotate(count=Count('id')).order_by('size')
 
@@ -94,8 +92,6 @@ def product_list_3(request):
     }
 
     return render(request, 'shop/products_list_3.html', context)
-
-
 
 
 def product_detail(request, id):
