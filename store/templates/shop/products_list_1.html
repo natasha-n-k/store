@@ -2,6 +2,26 @@
 {% load static %}
 {% block content %}
 <div class="basis">
+    <div class="filter-form">
+        <form method="get">
+            <select name="color">
+                <option value="">Выберите цвет</option>
+                {% for color in unique_colors %}
+                <option value="{{ color }}">{{ color }}</option>
+                {% endfor %}
+            </select>
+    
+            <select name="size">
+                <option value="">Выберите размер</option>
+                {% for size in unique_sizes %}
+                <option value="{{ size }}">{{ size }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Фильтровать</button>
+        </form>
+    </div>
+    
+    
     <div class="product-row">
         {% for product in products %}
         <div class="product">
