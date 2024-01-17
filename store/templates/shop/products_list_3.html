@@ -2,6 +2,28 @@
 {% load static %}
 {% block content %}
 <div class="basis">
+    <div>
+        <form method="get" action="">
+            <label for="color">цвет:</label>
+            <select name="color" id="color">
+                <option value="">выбрать</option>
+                {% for color in colors %}
+                    <option value="{{ color.color }}" {% if color.color == request.GET.color %}selected{% endif %}>{{ color.color }}</option>
+                {% endfor %}
+            </select>
+        
+            <!-- Size filter -->
+            <label for="size">размер:</label>
+            <select name="size" id="size">
+                <option value="">выбрать</option>
+                {% for size in sizes %}
+                    <option value="{{ size.size }}" {% if size.size == request.GET.size %}selected{% endif %}>{{ size.size }}</option>
+                {% endfor %}
+            </select>
+        
+            <button type="submit">Filter</button>
+        </form>
+    </div>
     <div class="product-row">
         {% for product in products %}
         <div class="product">

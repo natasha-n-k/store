@@ -54,12 +54,28 @@ def product_list_2(request):
 
     return render(request, 'shop/products_list_2.html', {'products': products})
 
+from django.db.models import Count
+
 def product_list_3(request):
     query = request.GET.get('q')
+    color_query = request.GET.get('color')
+    size_query = request.GET.get('size')
+
+    # Start with all products in 'accessories'
+    products = Product.objects.filter(category='accessories')
+
     if query:
-        products = Product.objects.filter(category='accessories')
-    else:
-        products = Product.objects.filter(category='accessories')
+        products = products.filter(name__icontains=query)
+
+    if color_query:
+        products = products.filter(color=color_query)
+
+    if size_query:
+        products = products.filter(size=size_query)
+
+    # Get distinct color and size options from the current product set
+    colors = products.values('color').annotate(count=Count('id')).order_by('color')
+    sizes = products.values('size').annotate(count=Count('id')).order_by('size')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -70,8 +86,16 @@ def product_list_3(request):
         products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
-        
-    return render(request, 'shop/products_list_3.html', {'products': products})
+
+    context = {
+        'products': products,
+        'colors': colors,
+        'sizes': sizes
+    }
+
+    return render(request, 'shop/products_list_3.html', context)
+
+
 
 
 def product_detail(request, id):
