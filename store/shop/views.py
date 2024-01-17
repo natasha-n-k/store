@@ -35,12 +35,22 @@ def product_list_1(request):
 
     return render(request, 'shop/products_list_1.html', {'products': products})
 
+from django.db.models import Count
+
 def product_list_2(request):
-    query = request.GET.get('q')
-    if query:
-        products = Product.objects.filter(category='clothing')
-    else:
-        products = Product.objects.filter(category='clothing')
+    color_query = request.GET.get('color')
+    size_query = request.GET.get('size')
+
+    products = Product.objects.filter(category='clothing')
+
+    if color_query:
+        products = products.filter(color=color_query)
+
+    if size_query:
+        products = products.filter(size=size_query)
+
+    colors = Product.objects.filter(category='clothing').values('color').annotate(count=Count('color')).order_by('color')
+    sizes = Product.objects.filter(category='clothing').values('size').annotate(count=Count('size')).order_by('size')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -52,7 +62,14 @@ def product_list_2(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    return render(request, 'shop/products_list_2.html', {'products': products})
+    context = {
+        'products': products,
+        'colors': colors,
+        'sizes': sizes
+    }
+
+    return render(request, 'shop/products_list_2.html', context)
+
 
 from django.db.models import Count
 
