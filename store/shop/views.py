@@ -49,8 +49,8 @@ def product_list_2(request):
     if size_query:
         products = products.filter(size=size_query)
 
-    colors = Product.objects.filter(category='clothing').values('color').annotate(count=Count('color')).order_by('color')
-    sizes = Product.objects.filter(category='clothing').values('size').annotate(count=Count('size')).order_by('size')
+    color_counts = Product.objects.filter(category='clothing').values('color').annotate(count=Count('color')).order_by('color')
+    size_counts = Product.objects.filter(category='clothing').values('size').annotate(count=Count('size')).order_by('size')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -64,14 +64,11 @@ def product_list_2(request):
 
     context = {
         'products': products,
-        'colors': colors,
-        'sizes': sizes
+        'color_counts': color_counts,
+        'size_counts': size_counts
     }
 
     return render(request, 'shop/products_list_2.html', context)
-
-
-from django.db.models import Count
 
 def product_list_3(request):
     query = request.GET.get('q')
@@ -89,8 +86,8 @@ def product_list_3(request):
     if size_query:
         products = products.filter(size=size_query)
 
-    colors = products.values('color').annotate(count=Count('id')).order_by('color')
-    sizes = products.values('size').annotate(count=Count('id')).order_by('size')
+    color_counts = products.values('color').annotate(count=Count('id')).order_by('color')
+    size_counts = products.values('size').annotate(count=Count('id')).order_by('size')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -104,8 +101,8 @@ def product_list_3(request):
 
     context = {
         'products': products,
-        'colors': colors,
-        'sizes': sizes
+        'color_counts': color_counts,
+        'size_counts': size_counts
     }
 
     return render(request, 'shop/products_list_3.html', context)

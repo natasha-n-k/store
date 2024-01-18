@@ -1,26 +1,70 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 {% block content %}
+<script>
+    // Function to toggle the visibility of filter options
+    function toggleFilterOptions() {
+        var filterButton = document.getElementById('filter-button');
+        var filterForm = document.getElementById('filter-form');
+
+        filterButton.addEventListener('click', function() {
+            // Toggle the display property of the filter form
+            filterForm.style.display = filterForm.style.display === 'none' ? 'block' : 'none';
+            // Toggle the active class on the filter button
+            this.classList.toggle('active');
+        });
+
+        // Close filter options when clicking outside of them
+        document.addEventListener('click', function(e) {
+            if (!filterButton.contains(e.target) && !filterForm.contains(e.target)) {
+                filterForm.style.display = 'none';
+                filterButton.classList.remove('active');
+            }
+        });
+
+        // Prevent closing the filter options when clicking inside them
+        filterForm.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Initialize the function on page load
+    window.onload = toggleFilterOptions;
+</script>
 <div class="basis">
-    <div class="filter-form">
-        <form method="get" action="">
-            <label for="color">цвет:</label>
-            <select name="color" id="color">
-                <option value="">выбрать</option>
-                {% for color in colors %}
-                    <option value="{{ color.color }}" {% if color.color == request.GET.color %}selected{% endif %}>{{ color.color }}</option>
-                {% endfor %}
-            </select>
-        
-            <label for="size">размер:</label>
-            <select name="size" id="size">
-                <option value="">выбрать</option>
-                {% for size in sizes %}
-                    <option value="{{ size.size }}" {% if size.size == request.GET.size %}selected{% endif %}>{{ size.size }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">показать товары</button>
-        </form>
+    <div class="filter">
+        <button id="filter-button">Фильтр</button>
+        <div class="filter-form" id="filter-form" style="display: none;">
+            <div class="filter-section">
+                <div class="filter-options" id="color-size-filter">
+                    <div class="filter-row">
+                        <div class="filter-column">
+                            <h3>Цвет</h3>
+                            <form method="get" action="">
+                                {% for color in color_counts %}
+                                <div class="filter-option">
+                                    <input type="checkbox" id="color_{{ forloop.counter }}" name="color" value="{{ color.color }}">
+                                    <label for="color_{{ forloop.counter }}" style="background-color: {{ color.color }};">{{ color.color }} ({{ color.count }})</label>
+                                </div>
+                                {% endfor %}
+                            </form>
+                        </div>
+                        <div class="filter-column">
+                            <h3>Размер</h3>
+                            <form method="get" action="" id="size-form">
+                                {% for size in size_counts %}
+                                <div class="filter-option">
+                                    <input type="checkbox" id="size_{{ forloop.counter }}" name="size" value="{{ size.size }}">
+                                    <label for="size_{{ forloop.counter }}">{{ size.size }} ({{ size.count }})</label>
+                                </div>
+                                {% endfor %}
+                                <button type="submit">Применить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="product-row">
         {% for product in products %}

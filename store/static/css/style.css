@@ -371,6 +371,98 @@ header {
 	padding-top: 50px;
 }
 
+.filter button{
+	border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px;
+    margin: 5px;
+    padding: 10px 15px;
+    display: inline-block;
+    border-top: 1px solid #fff;
+    color: #f7f7f7;
+    text-shadow: white 0 1px 0;
+    background-color: #000;
+}
+
+.filter.active {
+	background-color: #e8e8e8;
+}
+
+.filter-row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.filter-column {
+	margin-right: 40px;
+}
+
+.filter-section-toggle {
+    margin-bottom: 15px;
+}
+
+.filter-toggle {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.filter-toggle:hover {
+    background-color: #e8e8e8;
+}
+
+.filter-options {
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: absolute; 
+    background-color: white;
+    width: 100%; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.filter {
+	margin: 10px;
+}
+
+.filter-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.filter-section {
+	position: relative; 
+    margin-bottom: 15px;
+}
+
+.filter-section h3 {
+    margin-bottom: 10px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.filter-option input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filter-option label {
+    display: block;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-option label:hover {
+    background-color: #f0f0f0;
+}
+
 .product-row {
 	display: flex;
 	flex-wrap: wrap;
