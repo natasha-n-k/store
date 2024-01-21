@@ -42,21 +42,22 @@
                             <h3>Цвет</h3>
                             <form method="get" action="">
                                 {% for color in color_counts %}
-                                <div class="filter-option">
-                                    <input type="checkbox" id="color_{{ forloop.counter }}" name="color" value="{{ color.color }}">
-                                    <label for="color_{{ forloop.counter }}" style="background-color: {{ color.color }};">{{ color.color }} ({{ color.count }})</label>
-                                </div>
+                                    <div class="filter-option">
+                                        <input type="checkbox" id="color_{{ forloop.counter }}" name="color" value="{{ color.color }}">
+                                        <label for="color_{{ forloop.counter }}" style="background-color: {{ color.color }};">{{ color.color }} ({{ color.count }})</label>
+                                    </div>
                                 {% endfor %}
+                                <button type="submit">Применить</button>
                             </form>
                         </div>
                         <div class="filter-column">
                             <h3>Размер</h3>
                             <form method="get" action="" id="size-form">
                                 {% for size in size_counts %}
-                                <div class="filter-option">
-                                    <input type="checkbox" id="size_{{ forloop.counter }}" name="size" value="{{ size.size }}">
-                                    <label for="size_{{ forloop.counter }}">{{ size.size }} ({{ size.count }})</label>
-                                </div>
+                                    <div class="filter-option">
+                                        <input type="checkbox" id="size_{{ forloop.counter }}" name="size" value="{{ size.size }}">
+                                        <label for="size_{{ forloop.counter }}">{{ size.size }} ({{ size.count }})</label>
+                                    </div>
                                 {% endfor %}
                                 <button type="submit">Применить</button>
                             </form>
