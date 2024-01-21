@@ -1,8 +1,7 @@
 {% extends 'shop/base.html' %}
 {% load static %}
-<script src="{% static '../../../../static/js/product_detail.js' %}">
-</script>
-  
+<script src="{% static 'js/product_detail.js' %}"></script>
+
 {% block content %}
 <main class="main">
   <div class="detail__body">
@@ -26,8 +25,8 @@
           <label>Размер</label><br><br>
           <div class="sizes">
             {% for size in sizes %}
-              <input type="radio" id="size_{{ size }}" class="detail__form__size" name="size" value="{{ size }}" {% if forloop.first %}checked{% endif %} style="display: none;">
-              <label for="size_{{ size }}" class="size-btn">{{ size }}</label>
+              <input type="radio" id="size_{{ size.name }}" class="detail__form__size" name="size" value="{{ size.name }}" {% if forloop.first %}checked{% endif %} style="display: none;">
+              <label for="size_{{ size.name }}" class="size-btn">{{ size.name }}</label>
             {% endfor %}
           </div>
         </div>        
@@ -35,12 +34,12 @@
               <label for="id_color">Цвет</label><br><br>
               <select name="color" id="id_color">
                 {% for color in colors %}
-                  <option value="{{ color }}" {% if forloop.first %}selected{% endif %}>{{ color }}</option>
+                <option value="{{ color.name }}">{{ color.name }}</option>
                 {% endfor %}
               </select>
               <div class="color-circles">
                 {% for color in colors %}
-                  <span style="background-color: {{ color }};"></span>
+                  <span class="color-circle" style="background-color: {{ color.name }};"></span>
                 {% endfor %}
               </div>
         </div>

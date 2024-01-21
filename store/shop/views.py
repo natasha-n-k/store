@@ -40,21 +40,17 @@ def product_list_2(request):
     color_query = request.GET.getlist('color')
     size_query = request.GET.getlist('size')
 
-    print(f"Color Query: {color_query}")
-    print(f"Size Query: {size_query}")
-
     products = Product.objects.filter(category='clothing')
 
     if color_query:
-        products = products.filter(color__in=color_query)
+        products = products.filter(colors__name__in=color_query)
 
     if size_query:
-        products = products.filter(size__in=size_query)
+        products = products.filter(sizes__name__in=size_query)
 
-    print(f"SQL Query: {products.query}")
+    color_counts = Product.objects.filter(category='clothing').values('colors__name').annotate(count=Count('colors')).distinct().order_by('colors__name')
+    size_counts = Product.objects.filter(category='clothing').values('sizes__name').annotate(count=Count('sizes')).distinct().order_by('sizes__name')
 
-    color_counts = Product.objects.filter(category='clothing').values('color').annotate(count=Count('color')).order_by('color')
-    size_counts = Product.objects.filter(category='clothing').values('size').annotate(count=Count('size')).order_by('size')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -75,7 +71,6 @@ def product_list_2(request):
     return render(request, 'shop/products_list_2.html', context)
 
 
-
 def product_list_3(request):
     query = request.GET.get('q')
     color_query = request.GET.getlist('color')
@@ -87,13 +82,13 @@ def product_list_3(request):
         products = products.filter(name__icontains=query)
 
     if color_query:
-        products = products.filter(color__in=color_query)
+        products = products.filter(colors__name__in=color_query)
 
     if size_query:
-        products = products.filter(size__in=size_query)
+        products = products.filter(sizes__name__in=size_query)
 
-    color_counts = products.values('color').annotate(count=Count('id')).order_by('color')
-    size_counts = products.values('size').annotate(count=Count('id')).order_by('size')
+    color_counts = Product.objects.filter(category='accessories').values('colors__name').distinct().annotate(count=Count('colors')).order_by('colors__name')
+    size_counts = Product.objects.filter(category='accessories').values('sizes__name').distinct().annotate(count=Count('sizes')).order_by('sizes__name')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(products, 9)
@@ -116,9 +111,17 @@ def product_list_3(request):
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    colors = product.color.split(',') if product.color else []
-    sizes = product.size.split(',') if product.size else []
-    return render(request, 'shop/product_detail.html', {'product': product, 'colors': colors, 'sizes': sizes})
+    colors = product.colors.all()
+    sizes = product.sizes.all()
+
+    context = {
+        'product': product,
+        'colors': colors,
+        'sizes': sizes
+    }
+    
+    return render(request, 'shop/product_detail.html', context)
+
 
 @login_required
 def cart_detail(request):
